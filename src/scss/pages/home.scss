@@ -1,0 +1,100 @@
+@import "variables.scss";
+
+#search-container {
+  display: none;
+}
+
+.container {
+  padding: 20px 50px;
+  h1 {
+    margin: 100px 0 28px 0;
+  }
+}
+
+.about-headline {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.how-it-works-text-wrapper {
+  text-align: left !important;
+}
+
+.preloadAnimation {
+  margin-top: 130px;
+}
+
+.target-site-versions {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  max-width: 400px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.homepage-wrapper h4 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media (max-width: 700px) {
+  .about {
+    padding: 10px;
+  }
+
+  p {
+    text-align: left !important;
+  }
+
+  .container > h1 {
+    margin-top: 150px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .container > h1 {
+    margin-top: 140px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container > h1 {
+    margin-top: 110px;
+  }
+}
+
+#html5 a img {
+  box-shadow: 5px 5px 15px 2px #888888 !important;
+}
+
+.shadow-version a img {
+  padding: 0 !important;
+}
+
+.jira-versions {
+  text-align: center;
+}
+.jira-versions img {
+  max-width: 185px;
+  box-shadow: 1px 1px 15px 1px #888888;
+  margin: 10px;
+}
+
+.homepage-wrapper ul li {
+  padding: 5px;
+}
+
+#nodejs-text,
+#vuejs-text,
+#drupal8-text {
+  display: none !important;
+}
+
+#html5-text {
+  display: inline-block !important;
+}

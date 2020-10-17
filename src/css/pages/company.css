@@ -1,0 +1,91 @@
+.container > h1 {
+  margin-top: 100px; }
+
+.company {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  align-items: stretch;
+  justify-content: space-evenly;
+  margin-bottom: 70px; }
+
+/* individual company container */
+.company-container {
+  border: 1px solid #d1d0d0;
+  padding: 0 0 20px 0;
+  margin: 10px auto;
+  max-width: 350px; }
+
+.company-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 10px 0 10px 0;
+  background-color: #e2eafb; }
+
+.company-job-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 5px;
+  font-size: 14px;
+  background-color: #f8f4f4; }
+
+/* body text - the bullet items */
+.body-container {
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: left;
+  font-size: 14px;
+  padding-right: 20px; }
+
+.company-screenshot {
+  max-width: 320px;
+  margin-bottom: 50px; }
+
+.employment-dates {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  font-size: 12px;
+  padding: 10px;
+  background-color: #e2eafb; }
+
+.employment-type {
+  font-size: 10px;
+  font-style: italic; }
+
+@media (max-width: 1200px) {
+  .container {
+    grid-template-columns: 45% 45%; }
+
+  .company-container {
+    max-width: 455px; }
+
+  .company-screenshot {
+    max-width: 300px; } }
+@media (max-width: 900px) {
+  .company {
+    grid-template-columns: 90%; } }
+@media (max-width: 700px) {
+  .container > h1 {
+    margin-top: 140px; }
+
+  .company p {
+    padding: 5px 20px; } }
+@media (max-width: 500px) {
+  .company-screenshot {
+    max-width: 250px; } }
+@media (max-width: 400px) {
+  .container > h1 {
+    margin-top: 100px; }
+
+  .container .company {
+    padding-top: 10px; }
+
+  .company-screenshot {
+    max-width: 200px; } }
+
+/*# sourceMappingURL=company.css.map */

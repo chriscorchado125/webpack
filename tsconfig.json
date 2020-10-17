@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "outDir": "./src/js",
+    "rootDir": "./src/ts",
+    "moduleResolution": "node"
+  },
+  "include": ["./src/ts/**/*"]
+}

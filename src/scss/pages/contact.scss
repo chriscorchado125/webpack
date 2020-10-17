@@ -1,0 +1,117 @@
+@import "variables.scss";
+
+.navbar {
+  min-height: 60px !important;
+}
+
+#search-container {
+  display: none;
+}
+
+.container > h1 {
+  margin-top: 100px;
+}
+
+#contact-message-feedback-form {
+  margin: auto;
+  background-color: $main_color_light;
+  padding: 10px 10px 30px 10px;
+  text-align: center !important;
+  margin-top: 20px;
+  max-width: 600px;
+  border-radius: 10px;
+
+  label {
+    display: block;
+  }
+
+  #thank-you {
+    margin-top: 50px;
+  }
+
+  /* holds the current page url */
+  #edit-field-site-wrapper {
+    display: none;
+  }
+
+  /* subject align */
+  .form-text {
+    display: inline !important;
+  }
+
+  #edit-name {
+    max-width: 220px;
+  }
+  #edit-mail {
+    max-width: 220px;
+    margin-bottom: 50px;
+  }
+
+  /* display the name and email fiels next to each other */
+  .js-form-item-name,
+  .js-form-item-mail {
+    display: inline-block !important;
+  }
+
+  #edit-subject-0-value {
+    max-width: 90%;
+  }
+
+  #edit-message-0-value {
+    max-width: 95%;
+  }
+
+  #edit-actions {
+    margin-top: 30px;
+  }
+
+  textarea {
+    max-width: 600px;
+  }
+}
+
+#timer {
+  margin-top: 50px;
+  max-width: 250px;
+}
+
+/* stack name and email fields */
+@media (max-width: 800px) {
+  .container {
+    margin-top: 50px;
+    padding: 10px 10px 20px 10px;
+
+    #contact-message-feedback-form {
+      width: 100%;
+      border-radius: 0;
+    }
+
+    h1 {
+      margin-top: 50px;
+    }
+  }
+  .js-form-item-name {
+    display: block !important;
+  }
+  .js-form-item-mail {
+    display: block !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .container > h1 {
+    margin-top: 90px;
+  }
+}
+
+@media (max-width: 500px) {
+  #edit-message-0-value {
+    height: 150px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container > h1 {
+    margin-top: 60px;
+  }
+}

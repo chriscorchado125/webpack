@@ -1,0 +1,77 @@
+@import "./../variables.scss";
+
+#logo > img {
+  padding: 5px;
+  height: 60px;
+}
+
+#logo > img:hover {
+  border: 1px dashed $main_color;
+}
+
+#navbarCollapse {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.navbar {
+  border-bottom: 2px solid $main_color;
+  display: block;
+  min-height: 80px;
+  
+
+  /* force nav to stay horizontal */
+  .navbar-nav {
+    flex-direction: row;
+
+    /* align items vertically*/
+    .nav-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0px 5px;
+      width: 80px;
+    }
+    .nav-item-active,
+    .nav-item:hover {
+      font-weight: bold;
+      color: $main_color !important;
+    }
+  }
+} // .navbar
+
+@media (max-width: 700px) {
+  .navbar-nav {
+    justify-content: space-between;
+    width: 90%;
+    .nav-item {
+      justify-content: left;
+      width: 60px;
+      margin-left: 15px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  #logo img {
+    height: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  #logo img {
+    margin: 0 0 0 10px;
+  }
+  .navbar {
+    padding: 0;
+    .navbar-nav {
+      width: 100%;
+      margin-left: -7px !important;
+      .nav-item {
+        margin-left: -2px;
+        font-size: 14px;
+      }
+    }
+  }
+}

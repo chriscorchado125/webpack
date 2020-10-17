@@ -1,0 +1,55 @@
+@charset "UTF-8";
+#search-container {
+  float: right;
+  margin: -50px 0 0 0;
+  padding: 0px;
+  width: 300px;
+  text-align: center;
+  display: none;
+  /* search textbox */
+  /* remove IE “clear field or cross” X button from inputs field */
+  /* search button */ }
+  #search-container label {
+    display: inline-block; }
+  #search-container #searchCount {
+    font-size: 12px;
+    text-align: right;
+    margin-right: 0px;
+    display: inline-block;
+    width: 85px; }
+  #search-container #searchSite {
+    width: 150px; }
+  #search-container ::-ms-clear {
+    display: none; }
+  #search-container .searchBtn {
+    padding: 2px;
+    font-size: 12px;
+    margin-left: 0px; }
+  #search-container .searchBtn:hover {
+    color: #fff;
+    box-shadow: 0 0 #fff;
+    background-color: #7399ea; }
+
+@media (max-width: 700px) {
+  #search-container {
+    float: none;
+    width: 100%;
+    padding-bottom: 2px; } }
+@media (max-width: 500px) {
+  #search-container #searchSite {
+    width: 105px; }
+  #search-container #searchBtn {
+    margin-left: 5px; }
+  #search-container #searchCount {
+    width: 80px; } }
+@media (max-width: 350px) {
+  #search-container #searchSite {
+    width: 95px;
+    font-size: 12px; }
+  #search-container #searchCount {
+    width: 75px; } }
+/* remove IE “clear field or cross” X button from inputs field */
+::-ms-clear {
+  display: none; }
+
+/*# sourceMappingURL=search.css.map */

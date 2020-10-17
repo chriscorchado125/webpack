@@ -1,0 +1,57 @@
+label {
+  margin-bottom: 2px; }
+
+.paginationYes {
+  margin: -65px 0 0 0 !important; }
+
+.paginationNo {
+  margin: -53px 0 0 0 !important; }
+
+#pagination {
+  text-align: center;
+  padding-left: 45px;
+  margin-top: 5px;
+  display: inline-block;
+  /* next / prev text */ }
+  #pagination a {
+    color: #ffffff;
+    text-shadow: 1px 1px #000; }
+  #pagination .pager-navigation {
+    background-color: #7399ea;
+    margin: 0px 3px;
+    padding: 3px 10px;
+    font-size: 12px; }
+  #pagination .disabled {
+    color: #3d3c3c;
+    background-color: #cac9c9 !important; }
+
+#recordCount {
+  display: none; }
+
+@media (max-width: 700px) {
+  .paginationYes {
+    margin: -2px 0 0 0 !important; }
+
+  .paginationNo {
+    margin: 0 0 0 0 !important; }
+
+  #pagination {
+    padding-left: 30px; } }
+@media (max-width: 500px) {
+  .paginationYes {
+    margin: -5px 0 0 0 !important; }
+
+  #pagination {
+    padding-left: 10px; }
+    #pagination .pager-navigation {
+      margin: 0px 2px;
+      padding: 3px 5px; } }
+@media (max-width: 400px) {
+  #searchSite {
+    width: 85px !important; }
+
+  #pagination {
+    padding-left: 5px;
+    margin-right: 5px; } }
+
+/*# sourceMappingURL=pagination.css.map */
