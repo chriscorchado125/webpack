@@ -9,11 +9,11 @@ module.exports = {
 
   // https://webpack.js.org/concepts/entry-points/#multi-page-application
   entry: {
-    about: './src/about/main.js',
-    history: './src/history/main.js',
-    course: './src/course/main.js',
-    project: './src/project/main.js',
-    contact: './src/contact/main.js'
+    about: './src/pages/about/main.js',
+    history: './src/pages/history/main.js',
+    course: './src/pages/course/main.js',
+    project: './src/pages/project/main.js',
+    contact: './src/pages/contact/main.js'
   },
 
   // https://webpack.js.org/configuration/dev-server/
@@ -51,31 +51,31 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(), // cleans output.path by default
     new HtmlWebpackPlugin({
-      template: './src/about/tmpl.html',
+      template: './src/pages/about/tmpl.html',
       inject: 'body',
       chunks: ['about'],
       filename: 'index.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/history/tmpl.html',
+      template: './src/pages/history/tmpl.html',
       inject: 'body',
       chunks: ['history'],
       filename: 'companies.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/course/tmpl.html',
+      template: './src/pages/course/tmpl.html',
       inject: 'body',
       chunks: ['course'],
       filename: 'courses.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/project/tmpl.html',
+      template: './src/pages/project/tmpl.html',
       inject: 'body',
       chunks: ['project'],
       filename: 'projects.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/contact/tmpl.html',
+      template: './src/pages/contact/tmpl.html',
       inject: 'body',
       chunks: ['contact'],
       filename: 'contact.html'
