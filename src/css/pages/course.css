@@ -18,8 +18,7 @@
   font-size: 12px;
   max-width: 260px; }
   .course-box h2 {
-    height: 30px;
-    display: flex;
+    height: 22px;
     justify-content: center;
     align-items: center; }
   .course-box img {
