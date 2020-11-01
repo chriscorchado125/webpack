@@ -26,7 +26,7 @@ const getPage = (page, search, pagingURL) => __awaiter(void 0, void 0, void 0, f
             })
                 .then((page) => {
                 data = page.replace(/\/drupal8/g, API_BASE);
-                let form = data.substr(data.indexOf("<form"), data.indexOf("</form>"));
+                let form = data.substr(data.indexOf("<form class="), data.indexOf("</form>"));
                 form = form.substr(0, form.indexOf("</form>") + 8);
                 form = form.replace("Your email address", "Email");
                 let script = data.substr(data.indexOf('<script type="application/json" data-drupal-selector="drupal-settings-json">'), data.indexOf("></script>"));

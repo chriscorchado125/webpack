@@ -32,7 +32,7 @@ const getPage = async (page: string, search?: string, pagingURL?: string) => {
           data = page.replace(/\/drupal8/g, API_BASE); // update the HTML URLs from relative to absolute
 
           // get the contact form HTML
-          let form = data.substr(data.indexOf("<form"), data.indexOf("</form>"));
+          let form = data.substr(data.indexOf("<form class="), data.indexOf("</form>"));
           form = form.substr(0, form.indexOf("</form>") + 8);
 
           form = form.replace("Your email address", "Email");
