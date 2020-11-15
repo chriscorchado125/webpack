@@ -31,7 +31,7 @@ const getPage = (page, search, pagingURL) => __awaiter(void 0, void 0, void 0, f
                 form = form.replace("Your email address", "Email");
                 let script = data.substr(data.indexOf('<script type="application/json" data-drupal-selector="drupal-settings-json">'), data.indexOf("></script>"));
                 script = script.substr(0, script.indexOf("</script>") + 9);
-                data = `<h1 id="content" tabindex="12">Contact</h1>${form} ${script}`;
+                data = `<h1 id="content">Contact</h1>${form} ${script}`;
             })
                 .catch((error) => {
                 alert(`Sorry an error has occurred: ${error}`);
@@ -150,21 +150,21 @@ const getData = (dataURL) => __awaiter(void 0, void 0, void 0, function* () {
 const addProfiles = (id) => {
     document.getElementById(id).innerHTML = `
   <div class="icon" id="pdf-resume">
-    <a href="https://chriscorchado.com/resume/Chris-Corchado-resume-2020.pdf" target="_blank" tabindex="7">
+    <a href="https://chriscorchado.com/resume/Chris-Corchado-resume-2020.pdf" target="_blank">
       <img alt="Link to PDF Resume" src="https://chriscorchado.com/images/pdfIcon.jpg" title="Link to PDF Resume" />
       <span>Resume</span>
     </a>
   </div>
 
   <div class="icon" id="profile-linkedin">
-    <a href="https://www.linkedin.com/in/chriscorchado/" target="_blank" tabindex="8">
+    <a href="https://www.linkedin.com/in/chriscorchado/" target="_blank">
       <img alt="Link to LinkedIn Profile" title="Link to LinkedIn Profile" src="https://chriscorchado.com/images/linkedInIcon.jpg" />
       <span>LinkedIn</span>
     </a>
   </div>
 
   <div class="icon" id="profile-azure">
-    <a href="https://docs.microsoft.com/en-us/users/corchadochrisit-2736/" target="_blank" tabindex="9">
+    <a href="https://docs.microsoft.com/en-us/users/corchadochrisit-2736/" target="_blank">
       <img alt="Link to Azure Profile" title="Link to Azure Profile" src="https://chriscorchado.com/images/azureIcon.png" />
       <span>Azure</span>
     </a>
@@ -213,43 +213,43 @@ const setPageHTML = (values) => {
         case "companies":
             return `<div class="company-container col shadow">
 
-          <div class="company-name" tabindex="${indexCount++}">${itemTitle}</div>
-          <div class="company-job-title" tabindex="${indexCount++}">${itemJobTitle}</div>
-          <div class="body-container" tabindex="${indexCount++}">${itemBody}</div>
+          <div class="company-name">${itemTitle}</div>
+          <div class="company-job-title">${itemJobTitle}</div>
+          <div class="body-container">${itemBody}</div>
 
           <div class="screenshot-container">
             <img loading="lazy" src=${getFullUrlByPage(imgPieces[0], page)}
             class="company-screenshot"
             alt="${data.attributes.title} Screenshot"
-            title="${data.attributes.title} Screenshot" tabindex="${indexCount++}" />
+            title="${data.attributes.title} Screenshot" />
           </div>
 
-          <div class="employment-dates" tabindex="${indexCount++}">${startDate} - ${endDate}</div>
+          <div class="employment-dates">${startDate} - ${endDate}</div>
         </div>`;
             break;
         case "courses":
             item = `<div class="course-box box">
-          <h2 tabindex="${indexCount++}">${itemTitle}</h2>
+          <h2>${itemTitle}</h2>
 
           <div>
             <img loading="lazy" src="${getFullUrlByPage(imgPieces[0], page)}"
               alt="${itemTitle.replace(/(<([^>]+)>)/gi, "")}"
-              title="${itemTitle.replace(/(<([^>]+)>)/gi, "")}"  tabindex="${indexCount++}" />
+              title="${itemTitle.replace(/(<([^>]+)>)/gi, "")}"  />
           </div>
 
           <div class="course-wrapper">
 
-            <span class="course-date"  tabindex="${indexCount++}">${itemDate}</span>
+            <span class="course-date" >${itemDate}</span>
 
             <span class="course-links">
-              <a href="${getFullUrlByPage(itemPDF, page)}" target="_blank"  tabindex="${indexCount++}">
+              <a href="${getFullUrlByPage(itemPDF, page)}" target="_blank" >
                 <img loading="lazy" src="https://chriscorchado.com/images/pdfIcon.jpg" height="25"
                 title="View the PDF Certificate" alt="View the PDF Certificate"/>
               </a>
             </span>`;
             if (itemTrackImage) {
                 item += `<span class="course-links">
-            <a href="${getFullUrlByPage(itemTrackImage, page)}" data-featherlight="image"  tabindex="${indexCount++}">
+            <a href="${getFullUrlByPage(itemTrackImage, page)}" data-featherlight="image" >
               <img loading="lazy" src="https://chriscorchado.com/images/linkedIn-track.png" height="25"
               title="View the Courses in the Track" alt="View the Courses in the Track" />
             </a>
@@ -260,9 +260,9 @@ const setPageHTML = (values) => {
         case "projects":
             let imgAltCount = 0;
             item = `<div class="project col">
-        <div class="project-title" tabindex="${indexCount++}">${itemTitle}</div>
-        <div class="project-company" tabindex="${indexCount++}">${itemCompanyName} <span class="project-date" tabindex="${indexCount++}">(${itemDate})</span></div>
-        <div class="body-container" tabindex="${indexCount++}">${itemBody}</div>`;
+        <div class="project-title">${itemTitle}</div>
+        <div class="project-company">${itemCompanyName} <span class="project-date">(${itemDate})</span></div>
+        <div class="body-container">${itemBody}</div>`;
             if (imgPieces) {
                 let itemGridClass = `project-item-grid project-items${data.relationships.field_screenshot.data.length}`;
                 let section = `<section data-featherlight-gallery data-featherlight-filter="a" class="${itemGridClass}">`;
@@ -277,7 +277,7 @@ const setPageHTML = (values) => {
                         let projectImage = getFullUrlByPage(item, page);
                         section += `<div class="project-item shadow" title='${screenshotAlt[imgAltCount]}'>
 
-              <a href=${projectImage} class="gallery"  tabindex="${indexCount++}">
+              <a href=${projectImage} class="gallery" >
                 <div class="project-item-desc">
                   ${itemWithSearchHighlight(screenshotAlt[imgAltCount], searchedFor)}
                 </div>
@@ -295,12 +295,12 @@ const setPageHTML = (values) => {
             if (data.attributes.field_video_url) {
                 let encodedName = encodeURIComponent(itemTitle);
                 data.attributes.field_video_url.forEach((img) => {
-                    item += `<span title="Play Video"><a href="https://chriscorchado.com/video.html?url=${data.attributes.field_video_url}&name=${encodedName}" target="_blank" class="play-video"  tabindex="${indexCount++}">
+                    item += `<span title="Play Video"><a href="https://chriscorchado.com/video.html?url=${data.attributes.field_video_url}&name=${encodedName}" target="_blank" class="play-video" >
             Play Video <img loading="lazy" src="https://chriscorchado.com/images/play_video_new_window_icon.png" alt="Play Video" width="20" />
           </a></span>`;
                 });
             }
-            item += `<div class="project-technology" tabindex="${indexCount++}">${itemTechnology.slice(0, -2)}</div>`;
+            item += `<div class="project-technology">${itemTechnology.slice(0, -2)}</div>`;
             item += `</div>`;
             return item;
             break;
@@ -327,7 +327,6 @@ const renderPage = (data, page, searchedFor, next, prev) => {
     let itemCount = 0;
     let imgPieces = [];
     let includedTechnologyItem = [];
-    let tabIndexCount = 0;
     data.data.forEach((element) => {
         itemTitle = element.attributes.title;
         itemBody = element.attributes.body ? element.attributes.body.value : "";
@@ -378,7 +377,6 @@ const renderPage = (data, page, searchedFor, next, prev) => {
             }
         }
         itemCount++;
-        tabIndexCount = itemCount * 15;
         const allValues = [
             page,
             element,
@@ -394,8 +392,7 @@ const renderPage = (data, page, searchedFor, next, prev) => {
             itemCompanyName,
             itemTechnology,
             searchedFor,
-            includedTechnologyItem,
-            tabIndexCount
+            includedTechnologyItem
         ];
         switch (page) {
             case "about":
@@ -416,24 +413,24 @@ const renderPage = (data, page, searchedFor, next, prev) => {
     switch (page) {
         case "about":
             currentNavItem = "about-link";
-            item = `<h1 id="content" tabindex="12">About Me</h1>${item}`;
+            item = `<h1 id="content">About Me</h1>${item}`;
             break;
         case "companies":
             currentNavItem = "companies-link";
             pageIsSearchable = true;
-            item = `<h1 id="content" tabindex="12">History</h1><div class="container company">${item}</div>`;
+            item = `<h1 id="content">History</h1><div class="container company">${item}</div>`;
             break;
         case "courses":
             currentNavItem = "courses-link";
             pageIsSearchable = true;
             pageHasGallery = true;
-            item = ` <h1 id="content" tabindex="12">Courses</h1><div class="container courses-container row">${item}</div>`;
+            item = ` <h1 id="content">Courses</h1><div class="container courses-container row">${item}</div>`;
             break;
         case "projects":
             currentNavItem = "projects-link";
             pageIsSearchable = true;
             pageHasGallery = true;
-            item = `<h1 id="content" tabindex="12">Projects</h1><div class="container project-container row">${item}</div>`;
+            item = `<h1 id="content">Projects</h1><div class="container project-container row">${item}</div>`;
             break;
     }
     if (page !== "about") {
@@ -443,11 +440,12 @@ const renderPage = (data, page, searchedFor, next, prev) => {
     if (pageIsSearchable) {
         document.getElementById("search-container").style.display = "block";
         let searchTextBox = document.getElementById(SITE_SEARCH_ID);
-        searchTextBox.addEventListener("keyup", event => {
-            debounceMe(event);
-        });
         searchTextBox.addEventListener("keydown", event => {
             return searchFilter(event);
+        });
+        let searchSubmit = document.getElementById('searchSubmit');
+        searchSubmit.addEventListener("click", event => {
+            debounceMe(event);
         });
         let searchClearButton = document.getElementById('searchBtn');
         searchClearButton.addEventListener("click", event => {
@@ -456,8 +454,8 @@ const renderPage = (data, page, searchedFor, next, prev) => {
     }
     if (pageHasGallery) {
         $("a.gallery").featherlightGallery({
-            previousIcon: "&#9664;",
-            nextIcon: "&#9654;",
+            previousIcon: "<img src='https://chriscorchado.com/lightbox/images/left-arrow.png' alt='Prev' />",
+            nextIcon: "<img src='https://chriscorchado.com/lightbox/images/right-arrow.png' alt='Next' />",
             galleryFadeIn: 200,
             galleryFadeOut: 300
         });

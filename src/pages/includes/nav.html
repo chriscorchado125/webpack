@@ -1,42 +1,47 @@
 <nav class="navbar navbar-light bg-light fixed-top navbar-fixed-top shadow">
   <div class="navbar-collapse" id="navbarCollapse">
-    <div class="navbar-nav show" id="navbar-nav">
-      <a href="index.html" class="navbar-brand" id="logo" tabindex="2"
-        ><img
-          src="https://chriscorchado.com/images/chriscorchado-initials-logo.png"
-          title="Home"
-          alt="Chris Corchado Logo"
-      /></a>
-      <a href="companies.html" class="nav-item nav-link" id="companies-link" tabindex="3"
-        >History</a
-      >
-      <a href="courses.html" class="nav-item nav-link" id="courses-link" tabindex="4"
-        >Courses</a
-      >
-      <a href="projects.html" class="nav-item nav-link" id="projects-link" tabindex="5"
-        >Projects</a
-      >
 
-      <a href="contact.html" class="nav-item nav-link" id="contact-link" tabindex="6"
-        >Contact</a
-      >
+    <div class="navbar-nav show" id="navbar-nav">
+
+      <a href="index.html" class="navbar-brand" id="logo">
+        <img src="https://chriscorchado.com/images/chriscorchado-initials-logo.png" title="Home" alt="Chris Corchado Logo" />
+      </a>
+      <a href="companies.html" class="nav-item nav-link" id="companies-link">History</a>
+      <a href="courses.html" class="nav-item nav-link" id="courses-link">Courses</a>
+      <a href="projects.html" class="nav-item nav-link" id="projects-link">Projects</a>
+      <a href="contact.html" class="nav-item nav-link" id="contact-link">Contact</a>
+
     </div>
 
     <div id="profiles"></div>
 
-    <div id="search-container" role="search">
-      <span id="searchCount" tabindex="8">Loading...</span>
+    <form id="search-container" role="search">
+
+      <span id="searchCount" >Loading...</span>
+
       <label>
         <span class="screen-reader">Search</span>
         <input
-          type="text"
+          type="search"
           id="searchSite"
           placeholder="Search items"
           class="ccBtn"
           title="Search"
-          aria-label="Search"
-          tabindex="9"
-        />
+          aria-label="Search" />
+        </label>
+
+        <label>
+          <span class="screen-reader">Search</span>
+          <button
+            id="searchSubmit"
+            aria-label="Search"
+            class="searchBtn"
+            title="Search"
+            value="Search">
+            Search
+          </button>
+        </label>
+
         <label>
           <span class="screen-reader">Clear Search</span>
           <button
@@ -44,16 +49,13 @@
             class="searchBtn"
             aria-label="Clear Search"
             title="Clear search"
-            role="button"
-            tabindex="10"
-          >
-            clear
+            role="button">
+            Clear
           </button>
         </label>
-      </label>
 
       <div id="pagination"></div>
-    </div>
+    </form>
   </div>
 </nav>
 

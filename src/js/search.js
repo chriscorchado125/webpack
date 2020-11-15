@@ -49,13 +49,13 @@ const setPagination = (count, paginationTotal, prev, next) => {
         }
         document.getElementById("searchCount").innerHTML = `<span id="paging-info">${dataOffsetText}</span>`;
         prevLink = prev
-            ? `<a href="#" class="pager-navigation" id="prev" data-prev="${prev.href}" title="View the previous page" tabindex="10" role="button"
+            ? `<a href="#" class="pager-navigation" id="prev" data-prev="${prev.href}" title="View the previous page" role="button"
          >Prev</a>`
-            : `<span class="pager-navigation disabled" title="There is no previous page available" tabindex="11" role="button">Prev</span>`;
+            : `<span class="pager-navigation disabled" title="There is no previous page available" role="button">Prev</span>`;
         nextLink = next
-            ? `<a href="#" class="pager-navigation" id="next" data-next="${next.href}" title="View the next page" tabindex="12" role="button"
+            ? `<a href="#" class="pager-navigation" id="next" data-next="${next.href}" title="View the next page" role="button"
           >Next</a>`
-            : `<span class="pager-navigation disabled" title="There is no next page available" tabindex="13" role="button">Next</span>`;
+            : `<span class="pager-navigation disabled" title="There is no next page available" role="button">Next</span>`;
     }
     let paginationCount = document.getElementById("pagination");
     if (count < MAX_ITEMS_PER_PAGE && paginationTotal === 1) {
@@ -85,12 +85,8 @@ const debounceMe = debounce((event) => {
     }
 }, 500);
 const searchFilter = (event) => {
-    let charCode = event.keyCode || event.which;
-    return ((charCode >= 65 && charCode <= 122) ||
-        (charCode >= 96 && charCode <= 105) ||
-        (charCode >= 48 && charCode <= 57) ||
-        charCode == 16 ||
-        charCode == 32);
+    const allowOnlyLettersAndSpace = new RegExp("^(?! )[A-Za-z\s]*$");
+    return allowOnlyLettersAndSpace.test(event.key);
 };
 const searchClear = (searchTextBoxID) => {
     const inputSearchBox = document.getElementById(searchTextBoxID);

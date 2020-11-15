@@ -93,13 +93,13 @@ const setPagination = (
 
     // configure next and prev links
     prevLink = prev
-      ? `<a href="#" class="pager-navigation" id="prev" data-prev="${prev.href}" title="View the previous page" tabindex="10" role="button"
+      ? `<a href="#" class="pager-navigation" id="prev" data-prev="${prev.href}" title="View the previous page" role="button"
          >Prev</a>`
-      : `<span class="pager-navigation disabled" title="There is no previous page available" tabindex="11" role="button">Prev</span>`;
+      : `<span class="pager-navigation disabled" title="There is no previous page available" role="button">Prev</span>`;
     nextLink = next
-      ? `<a href="#" class="pager-navigation" id="next" data-next="${next.href}" title="View the next page" tabindex="12" role="button"
+      ? `<a href="#" class="pager-navigation" id="next" data-next="${next.href}" title="View the next page" role="button"
           >Next</a>`
-      : `<span class="pager-navigation disabled" title="There is no next page available" tabindex="13" role="button">Next</span>`;
+      : `<span class="pager-navigation disabled" title="There is no next page available" role="button">Next</span>`;
   }
 
   // hide pagination when the item count is less than the page limit and on the first page
@@ -153,15 +153,8 @@ const debounceMe = debounce((event: any) => {
  * @return {string} - allowed characters
  */
 const searchFilter = (event: KeyboardEvent) => {
-  let charCode = event.keyCode || event.which;
-
-  return (
-    (charCode >= 65 && charCode <= 122) || // a-z
-    (charCode >= 96 && charCode <= 105) || // 0-9 numeric keypad
-    (charCode >= 48 && charCode <= 57) || // 0-9 top of keyboard
-    charCode == 16 || // shift key - A-Z
-    charCode == 32 // space
-  );
+  const allowOnlyLettersAndSpace = new RegExp("^(?! )[A-Za-z\s]*$");
+  return allowOnlyLettersAndSpace.test(event.key);
 };
 
 /**

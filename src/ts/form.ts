@@ -1,4 +1,3 @@
-
 /**
  * After a form is submitted set a thank you message
  * with a countdown that then forward to the homepage
