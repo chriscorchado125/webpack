@@ -15,9 +15,9 @@
 
     <div id="profiles"></div>
 
-    <form id="search-container" role="search">
+    <form id="search-container" role="search" onsubmit="return false">
 
-      <span id="searchCount" >Loading...</span>
+      <span id="searchCount">Loading...</span>
 
       <label>
         <span class="screen-reader">Search</span>
@@ -27,14 +27,14 @@
           placeholder="Search items"
           class="ccBtn"
           title="Search"
-          aria-label="Search" />
+          aria-label="Search Field" />
         </label>
 
         <label>
           <span class="screen-reader">Search</span>
           <button
             id="searchSubmit"
-            aria-label="Search"
+            aria-label="Search Submit"
             class="searchBtn"
             title="Search"
             value="Search">
