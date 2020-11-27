@@ -3,8 +3,7 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
+
 
 const buildPath = path.resolve(__dirname, 'dist')
 
@@ -91,15 +90,15 @@ module.exports = {
   ],
 
   // https://webpack.js.org/configuration/optimization/
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true
-      }),
-      new OptimizeCssAssetsPlugin({})
-    ]
-  }
+  // optimization: {
+  //   minimize: true,
+  //   minimizer: [
+  //     new TerserPlugin({
+  //       cache: true,
+  //       parallel: true,
+  //       sourceMap: true
+  //     }),
+  //     new OptimizeCssAssetsPlugin({})
+  //   ]
+  // }
 }
