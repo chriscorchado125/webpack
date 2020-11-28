@@ -1,16 +1,17 @@
 on: push
-name: Publish Website
+name: Deploy website on push
 jobs:
-  FTP-Deploy-Action:
-    name: FTP-Deploy-Action
+  web-deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.2
-        with:
-          fetch-depth: 2
-      - name: FTP-Deploy-Action
+      - name: Get latest code
+        uses: actions/checkout@v2.3.2
+
+      - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: ftp.chriscorchado.com/webpack
+          server: ftp.chriscorchado.com
           username: chrisgit@chriscorchado.com
           password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: public_html/webpack
