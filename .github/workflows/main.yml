@@ -14,4 +14,4 @@ jobs:
           server: ftp.chriscorchado.com
           username: chrisgit@chriscorchado.com
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: "./webpack/"
+          local-dir: "/webpack/"
