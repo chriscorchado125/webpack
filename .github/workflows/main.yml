@@ -11,7 +11,6 @@ jobs:
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: ftp.chriscorchado.com
+          server: ftp.chriscorchado.com/webpack
           username: chrisgit@chriscorchado.com
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: "/webpack/"
