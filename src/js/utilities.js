@@ -75,8 +75,10 @@ const getCurrentPage = () => {
         return pathnamePieces.length;
     })
         .pop();
-    let pageName = thisPage.split(".")[0];
-    if (pageName == "index" || pageName == "html5")
+    let pageName = "";
+    if (thisPage)
+        pageName = thisPage.split(".")[0];
+    if (pageName == "index" || !pageName)
         pageName = "about";
     return pageName;
 };
