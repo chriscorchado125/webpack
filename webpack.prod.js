@@ -4,7 +4,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-
 const buildPath = path.resolve(__dirname, 'dist')
 
 module.exports = {
@@ -15,6 +14,7 @@ module.exports = {
 
   // https://webpack.js.org/concepts/entry-points/#multi-page-application
   entry: {
+    about: './src/pages/index.js',
     about: './src/pages/about/main.js',
     history: './src/pages/history/main.js',
     course: './src/pages/course/main.js',
