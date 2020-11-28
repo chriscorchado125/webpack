@@ -62,9 +62,9 @@ const getPage = async (page: string, search?: string, pagingURL?: string) => {
     if (pagingURL) {
       data = await getData(pagingURL);
     } else {
-
       switch (page) {
         case "about":
+        case "webpack":
           data = await getData(
             `${API_BASE}/jsonapi/node/page?fields[node--page]=id,title,body&
               filter[id][operator]=CONTAINS&
@@ -172,7 +172,7 @@ const getPage = async (page: string, search?: string, pagingURL?: string) => {
 
   data = { ...data, passedInCount };
 
-  if (data.data.length) {
+  if (data.data && data.data.length) {
     renderPage(data, page, search, data.links.next, data.links.prev);
   } else {
     updateInterface(search);
@@ -271,6 +271,7 @@ const setPageHTML = (values: any) => {
 
   switch (page) {
     case "about": // homepage
+    case "webpack":
       document.getElementById("search-container").style.display = "none"; // hide search box
 
       // add a border to the site logo
@@ -607,6 +608,7 @@ const renderPage = (
 
     switch (page) {
       case "about":
+      case "webpack":
         item = setPageHTML(allValues);
         break;
       case "companies":
@@ -627,6 +629,7 @@ const renderPage = (
   let pageHasGallery = false;
   switch (page) {
     case "about":
+    case "webpack":
       currentNavItem = "about-link";
       item = `<h1 id="content">About Me</h1>${item}`;
       break;
@@ -652,7 +655,7 @@ const renderPage = (
       break;
   }
 
-  if (page !== "about" && page !== "resume") {
+  if (page !== "about" && page !== "resume" && page !== "webpack") {
     document.getElementById(currentNavItem).className += " nav-item-active";
   }
 
@@ -689,7 +692,7 @@ const renderPage = (
     });
   }
 
-  if (page !== "about" && page !== "contact") {
+  if (page !== "about" && page !== "contact"  && page !== "webpack") {
 
     setPagination(itemCount, data.passedInCount.currentCount, prev, next)
 
@@ -712,10 +715,10 @@ const renderPage = (
 
   setLoading(false);
 
-  if (page == "about") {
+  if (page == "about" || page == "webpack") {
     // set current site version
-      document.getElementById("html5").setAttribute("class", "shadow-version noLink");
-      document.getElementById("html5-here").style.display = "block";
+      document.getElementById("webpack").setAttribute("class", "shadow-version noLink");
+      document.getElementById("webpack-here").style.display = "block";
   }
 };
 

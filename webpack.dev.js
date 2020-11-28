@@ -21,9 +21,6 @@ module.exports = {
   devServer: {
     port: 8080,
     writeToDisk: false, // https://webpack.js.org/configuration/dev-server/#devserverwritetodisk-
-    historyApiFallback: {
-      index: 'index.html',
-    }
   },
 
   // https://webpack.js.org/concepts/loaders/

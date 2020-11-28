@@ -48,6 +48,7 @@ const getPage = (page, search, pagingURL) => __awaiter(void 0, void 0, void 0, f
         else {
             switch (page) {
                 case "about":
+                case "webpack":
                     data = yield getData(`${API_BASE}/jsonapi/node/page?fields[node--page]=id,title,body&
               filter[id][operator]=CONTAINS&
               filter[id][value]=ca23f416-ad70-41c2-9228-52ba6577abfe`);
@@ -138,7 +139,7 @@ const getPage = (page, search, pagingURL) => __awaiter(void 0, void 0, void 0, f
             : 1
     };
     data = Object.assign(Object.assign({}, data), { passedInCount });
-    if (data.data.length) {
+    if (data.data && data.data.length) {
         renderPage(data, page, search, data.links.next, data.links.prev);
     }
     else {
@@ -215,6 +216,7 @@ const setPageHTML = (values) => {
     let indexCount = values[15];
     switch (page) {
         case "about":
+        case "webpack":
             document.getElementById("search-container").style.display = "none";
             document.getElementById("logo").getElementsByTagName("img")[0].style.border =
                 "1px dashed #7399EA";
@@ -426,6 +428,7 @@ const renderPage = (data, page, searchedFor, next, prev) => {
         ];
         switch (page) {
             case "about":
+            case "webpack":
                 item = setPageHTML(allValues);
                 break;
             case "companies":
@@ -445,6 +448,7 @@ const renderPage = (data, page, searchedFor, next, prev) => {
     let pageHasGallery = false;
     switch (page) {
         case "about":
+        case "webpack":
             currentNavItem = "about-link";
             item = `<h1 id="content">About Me</h1>${item}`;
             break;
@@ -469,7 +473,7 @@ const renderPage = (data, page, searchedFor, next, prev) => {
             item = `<h1 id="content">Resume</h1><div class="container">${item}</div>`;
             break;
     }
-    if (page !== "about" && page !== "resume") {
+    if (page !== "about" && page !== "resume" && page !== "webpack") {
         document.getElementById(currentNavItem).className += " nav-item-active";
     }
     document.getElementsByClassName("container")[0].innerHTML = item;
@@ -496,7 +500,7 @@ const renderPage = (data, page, searchedFor, next, prev) => {
             galleryFadeOut: 300
         });
     }
-    if (page !== "about" && page !== "contact") {
+    if (page !== "about" && page !== "contact" && page !== "webpack") {
         setPagination(itemCount, data.passedInCount.currentCount, prev, next);
         const inputSearchBox = document.getElementById(SITE_SEARCH_ID);
         if (document.getElementById('prev')) {
@@ -513,9 +517,9 @@ const renderPage = (data, page, searchedFor, next, prev) => {
         }
     }
     setLoading(false);
-    if (page == "about") {
-        document.getElementById("html5").setAttribute("class", "shadow-version noLink");
-        document.getElementById("html5-here").style.display = "block";
+    if (page == "about" || page == "webpack") {
+        document.getElementById("webpack").setAttribute("class", "shadow-version noLink");
+        document.getElementById("webpack-here").style.display = "block";
     }
 };
 export { getPage, getData, addProfiles, setPageHTML, renderPage };
