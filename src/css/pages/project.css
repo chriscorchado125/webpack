@@ -45,7 +45,7 @@
     margin: 10px;
     max-width: 150px;
     min-width: 50px;
-    border: 1px solid #ccdaf7; }
+    border: 1px solid #8cabed; }
   .project-container .gallery img {
     padding: 10px;
     max-width: 90%; }
@@ -65,7 +65,7 @@
     margin: auto;
     margin: 20px auto;
     color: rgba(0, 0, 0, 0.7) !important;
-    border: 1px solid #ccdaf7; }
+    border: 1px solid #8cabed; }
     .project-container .play-video img {
       margin: 0 0 5px 5px; }
   .project-container .play-video:hover {

@@ -3,14 +3,14 @@
   height: 60px; }
 
 #logo > img:hover {
-  border: 1px dashed #7399ea; }
+  border: 1px dashed #346adf; }
 
 #navbarCollapse {
   max-width: 1100px;
   margin: auto; }
 
 .navbar {
-  border-bottom: 2px solid #7399ea;
+  border-bottom: 2px solid #346adf;
   display: block;
   min-height: 80px;
   /* force nav to stay horizontal */ }
@@ -27,7 +27,7 @@
     .navbar .navbar-nav .nav-item-active,
     .navbar .navbar-nav .nav-item:hover {
       font-weight: bold;
-      color: #7399ea !important; }
+      color: #346adf !important; }
 
 @media (max-width: 700px) {
   .navbar-nav {
