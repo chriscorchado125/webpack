@@ -153,9 +153,12 @@ const getData = (dataURL) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 const addProfiles = (id) => {
+    let subFolder = "";
+    if (document.location.toString().indexOf("webpack") !== -1)
+        subFolder = "/webpack";
     document.getElementById(id).innerHTML = `
   <div class="icon" id="html-resume">
-    <a href="/resume.html">
+    <a href="${subFolder}/resume.html">
       <img alt="Link to HTML Resume with PDF and Word options" src="https://chriscorchado.com/images/htmlIcon.jpg" />
       <span>Resume</span>
     </a>
