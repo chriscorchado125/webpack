@@ -197,12 +197,11 @@ const getData = async (dataURL: string) => {
  * @param {string} id - ID of element to insert into
  */
 const addProfiles = (id: string) => {
-  let subFolder = "";
-  if (document.location.toString().indexOf("webpack") !== -1) subFolder = "/webpack";
+ const baseDir = window.location.toString().toLocaleLowerCase().indexOf("/webpack") !== -1 ? "/webpack" : "";
 
   document.getElementById(id).innerHTML = `
   <div class="icon" id="html-resume">
-    <a href="${subFolder}/resume.html">
+    <a href="${baseDir}/resume.html">
       <img alt="Link to HTML Resume with PDF and Word options" src="https://chriscorchado.com/images/htmlIcon.jpg" />
       <span>Resume</span>
     </a>
