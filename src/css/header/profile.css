@@ -24,7 +24,9 @@
 @media (max-width: 400px) {
   #profiles {
     margin: -6px 0 5px 0 !important; }
-    #profiles .icon img {
-      height: 15px; } }
+    #profiles .icon {
+      width: 45px; }
+      #profiles .icon img {
+        height: 15px; } }
 
 /*# sourceMappingURL=profile.css.map */

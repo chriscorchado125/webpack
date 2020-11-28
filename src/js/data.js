@@ -124,6 +124,11 @@ const getPage = (page, search, pagingURL) => __awaiter(void 0, void 0, void 0, f
                 page[limit]=${MAX_ITEMS_PER_PAGE}`);
                     }
                     break;
+                case "resume":
+                    data = yield getData(`${API_BASE}/jsonapi/node/page?fields[node--page]=id,title,body&
+              filter[id][operator]=CONTAINS&
+              filter[id][value]=815cf534-a677-409c-be7a-b231c24827b5`);
+                    break;
             }
         }
     }
@@ -149,9 +154,9 @@ const getData = (dataURL) => __awaiter(void 0, void 0, void 0, function* () {
 });
 const addProfiles = (id) => {
     document.getElementById(id).innerHTML = `
-  <div class="icon" id="pdf-resume">
-    <a href="https://chriscorchado.com/resume/Chris-Corchado-resume-2020.pdf" target="_blank">
-      <img alt="Link to PDF Resume" src="https://chriscorchado.com/images/pdfIcon.jpg" title="Link to PDF Resume" />
+  <div class="icon" id="html-resume">
+    <a href="/resume.html">
+      <img alt="Link to HTML Resume with PDF and Word options" src="https://chriscorchado.com/images/htmlIcon.jpg" />
       <span>Resume</span>
     </a>
   </div>
@@ -169,6 +174,23 @@ const addProfiles = (id) => {
       <span>Azure</span>
     </a>
   </div>`;
+};
+const addResumes = (id) => {
+    document.getElementById(id).innerHTML = `
+  <div class="icon" id="pdf-resume">
+    <a href="https://chriscorchado.com/resume/Chris-Corchado-resume-2020.pdf" target="_blank" rel="noopener" title="Opening a new window">
+      <img alt="Link to PDF Resume" src="https://chriscorchado.com/images/pdfIcon.jpg" />
+      <span>PDF</span>
+    </a>
+  </div>
+
+  <div class="icon" id="word-resume">
+    <a href="https://chriscorchado.com/resume/Chris-Corchado-resume-2020.docx" title="File will download">
+      <img alt="Link to MS Word Resume" src="https://chriscorchado.com/images/wordIcon.jpg" />
+      <span>Word</span>
+    </a>
+  </div>
+`;
 };
 const setPageHTML = (values) => {
     let item = "";
@@ -304,6 +326,11 @@ const setPageHTML = (values) => {
             item += `</div>`;
             return item;
             break;
+        case "resume":
+            let resumeData = data.attributes.body.value.toString();
+            addResumes("profiles");
+            return resumeData;
+            break;
     }
 };
 const renderPage = (data, page, searchedFor, next, prev) => {
@@ -407,6 +434,9 @@ const renderPage = (data, page, searchedFor, next, prev) => {
             case "projects":
                 item += setPageHTML(allValues);
                 break;
+            case "resume":
+                item = setPageHTML(allValues);
+                break;
         }
     });
     let pageHasGallery = false;
@@ -432,8 +462,11 @@ const renderPage = (data, page, searchedFor, next, prev) => {
             pageHasGallery = true;
             item = `<h1 id="content">Projects</h1><div class="container project-container row">${item}</div>`;
             break;
+        case "resume":
+            item = `<h1 id="content">Resume</h1><div class="container">${item}</div>`;
+            break;
     }
-    if (page !== "about") {
+    if (page !== "about" && page !== "resume") {
         document.getElementById(currentNavItem).className += " nav-item-active";
     }
     document.getElementsByClassName("container")[0].innerHTML = item;

@@ -19,7 +19,8 @@ module.exports = {
     history: './src/pages/history/main.js',
     course: './src/pages/course/main.js',
     project: './src/pages/project/main.js',
-    contact: './src/pages/contact/main.js'
+    contact: './src/pages/contact/main.js',
+    resume: './src/pages/resume/main.js'
   },
 
   // how to write the compiled files to disk
@@ -82,6 +83,12 @@ module.exports = {
       inject: 'body',
       chunks: ['contact'],
       filename: 'contact.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/pages/resume/tmpl.html',
+      inject: 'body',
+      chunks: ['resume'],
+      filename: 'resume.html'
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
