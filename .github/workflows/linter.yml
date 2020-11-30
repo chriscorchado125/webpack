@@ -4,8 +4,8 @@
 ## Linter GitHub Actions ##
 ###########################
 ###########################
-name: Lint Code Base
-
+- name: Super-Linter
+  uses: github/super-linter@v3.13.5
 #
 # Documentation:
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
@@ -53,4 +53,4 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.linter }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
