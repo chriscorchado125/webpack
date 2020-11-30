@@ -24,4 +24,4 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: master
-          GITHUB_TOKEN: ${{ secrets.FTP_PASSWORD }}
+          GITHUB_TOKEN: ${{ linter }}
