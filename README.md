@@ -1,4 +1,4 @@
 # Webpack
 Webpack version of chriscorchado.com
 
-Publish via Git Actions
+Currently hosted on : https://chriscorchado.com/webpack
