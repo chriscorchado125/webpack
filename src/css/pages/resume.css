@@ -23,6 +23,7 @@
     .container .resume h2 {
       color: #3a4261;
       margin-bottom: 0;
+      /* no unit */
       font-size: 26px;
       text-align: center;
       font-weight: bold; }
@@ -43,6 +44,7 @@
       margin-bottom: 15px; }
     .container .resume h4 {
       margin: 0;
+      /* no unit */
       font-size: 18px;
       font-weight: bold; }
       .container .resume h4 .years {
@@ -74,6 +76,7 @@
         display: inline-block;
         min-width: 210px;
         padding: 0;
+        /* no unit */
         margin: 0 0 0 50px; }
         .container .resume #skills_experise_ul_wrapper ul li {
           font-size: 14px;
@@ -122,7 +125,8 @@
     margin-left: 40px; } }
 @media (max-width: 520px) {
   .container .resume {
-    padding: 0 0;
+    padding: 0;
+    /* no unit */
     /* Education certificate, diploma */ }
     .container .resume h4 {
       text-align: center;

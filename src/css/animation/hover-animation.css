@@ -13,7 +13,9 @@
   position: absolute;
   z-index: -1;
   top: 0;
+  /* no unit */
   left: 0;
+  /* no unit */
   width: 100%;
   height: 100%;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);

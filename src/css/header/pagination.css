@@ -18,7 +18,8 @@ label {
     text-shadow: 1px 1px #000; }
   #pagination .pager-navigation {
     background-color: #346adf;
-    margin: 0px 3px;
+    margin: 0 3px;
+    /* no unit */
     padding: 3px 10px;
     font-size: 12px; }
   #pagination .disabled {

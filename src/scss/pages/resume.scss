@@ -21,7 +21,7 @@
     /* FULL STACK DEVELOPER */
     h2 {
       color: #3a4261;
-      margin-bottom: 0;
+      margin-bottom: 0; /* no unit */
       font-size: 26px;
       text-align: center;
       font-weight: bold;
@@ -50,7 +50,7 @@
 
     /* Company, City, State - Years */
     h4 {
-      margin: 0;
+      margin: 0; /* no unit */
       font-size: 18px;
       font-weight: bold;
       .years {
@@ -103,7 +103,7 @@
       ul {
         display: inline-block;
         min-width: 210px;
-        padding: 0;
+        padding: 0; /* no unit */
         margin: 0 0 0 50px;
 
         li {
@@ -202,7 +202,8 @@
 @media (max-width: 520px) {
   .container {
     .resume {
-      padding: 0 0;
+      padding: 0; /* no unit */
+
       h4 {
         text-align: center;
         font-size: 13px;
@@ -212,6 +213,7 @@
           margin-left: 20px;
         }
       }
+
       /* Education certificate, diploma */
       h4 + div {
         font-size: 13px;
@@ -227,6 +229,7 @@
 @media (max-width: 400px) {
   .container {
     padding-bottom: 20px !important;
+
     .resume {
       padding: 0 10px;
     }
@@ -235,9 +238,11 @@
       margin-top: 105px;
     }
   }
+
   #profiles {
     .icon {
       width: 35px;
+
       img {
         height: 15px;
       }

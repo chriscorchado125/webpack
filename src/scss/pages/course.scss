@@ -10,6 +10,7 @@
   justify-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 0 0 40px 0;
+
   /* course title */
   h2 {
     font-size: 12px;
@@ -32,15 +33,18 @@
   img {
     max-width: 200px;
   }
+
   .course-wrapper {
     max-width: 190px;
     margin: auto;
     padding: 0 5px;
   }
+
   .course-date {
     float: left;
     margin-top: 4px;
   }
+
   .course-links {
     float: right;
     padding: 0 2px;
@@ -51,10 +55,12 @@
   .courses-container {
     .course-box {
       padding: 20px;
+
       img {
         max-width: 170px;
       }
     }
+
     h2 {
       font-size: 12px;
     }
@@ -64,6 +70,7 @@
 @media (max-width: 1000px) {
   .courses-container {
     grid-template-columns: 1fr 1fr 1fr;
+
     .course-box {
       padding: 15px;
     }
@@ -80,6 +87,7 @@
   #pagination {
     display: inline;
   }
+
   .container > h1 {
     margin-top: 135px;
   }
@@ -97,6 +105,7 @@
       padding: 10px !important;
     }
   }
+
   .container > h1 {
     margin-top: 100px;
   }

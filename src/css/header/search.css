@@ -1,8 +1,13 @@
 @charset "UTF-8";
+/* remove IE “clear field or cross” X button from inputs field */
+::-ms-clear {
+  display: none; }
+
 #search-container {
   float: right;
   margin: -50px 0 0 0;
-  padding: 0px;
+  padding: 0;
+  /* no unit */
   width: 330px;
   text-align: center;
   display: none;
@@ -14,7 +19,8 @@
   #search-container #searchCount {
     font-size: 12px;
     text-align: right;
-    margin-right: 0px;
+    margin-right: 0;
+    /* no unit */
     display: inline-block;
     width: 85px; }
   #search-container #searchSite {
@@ -24,7 +30,8 @@
   #search-container .searchBtn {
     padding: 2px;
     font-size: 12px;
-    margin-left: 0px; }
+    margin-left: 0;
+    /* no unit */ }
   #search-container .searchBtn:hover {
     color: #fff;
     box-shadow: 0 0 #fff;
@@ -48,8 +55,5 @@
     font-size: 12px; }
   #search-container #searchCount {
     width: 75px; } }
-/* remove IE “clear field or cross” X button from inputs field */
-::-ms-clear {
-  display: none; }
 
 /*# sourceMappingURL=search.css.map */

@@ -72,9 +72,11 @@
   .container {
     grid-template-columns: 45% 45%;
   }
+
   .company-container {
     max-width: 455px;
   }
+
   .company-screenshot {
     max-width: 300px;
   }
@@ -90,6 +92,7 @@
   .container > h1 {
     margin-top: 140px;
   }
+
   .company {
     p {
       padding: 5px 20px;

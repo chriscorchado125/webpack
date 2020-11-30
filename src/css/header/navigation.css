@@ -21,8 +21,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0px;
-      padding: 0px 5px;
+      margin: 0;
+      /* no unit */
+      padding: 0 5px;
+      /* no unit */
       width: 80px; }
     .navbar .navbar-nav .nav-item-active,
     .navbar .navbar-nav .nav-item:hover {

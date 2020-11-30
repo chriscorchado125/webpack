@@ -1,9 +1,14 @@
 @import "./../variables.scss";
 
+/* remove IE “clear field or cross” X button from inputs field */
+::-ms-clear {
+  display: none;
+}
+
 #search-container {
   float: right;
   margin: -50px 0 0 0;
-  padding: 0px;
+  padding: 0; /* no unit */
   width: 330px;
   text-align: center;
   display: none;
@@ -15,7 +20,7 @@
   #searchCount {
     font-size: 12px;
     text-align: right;
-    margin-right: 0px;
+    margin-right: 0; /* no unit */
     display: inline-block;
     width: 85px;
   }
@@ -34,7 +39,7 @@
   .searchBtn {
     padding: 2px;
     font-size: 12px;
-    margin-left: 0px;
+    margin-left: 0; /* no unit */
   }
 
   .searchBtn:hover {
@@ -57,9 +62,11 @@
     #searchSite {
       width: 105px;
     }
+
     #searchBtn {
       margin-left: 5px;
     }
+
     #searchCount {
       width: 80px;
     }
@@ -77,9 +84,4 @@
       width: 75px;
     }
   }
-}
-
-/* remove IE “clear field or cross” X button from inputs field */
-::-ms-clear {
-  display: none;
 }
