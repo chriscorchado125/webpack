@@ -16,12 +16,12 @@
   /* force nav to stay horizontal */ }
   .navbar .navbar-nav {
     flex-direction: row;
-    /* align items vertically*/ }
+    /* align items vertically */ }
     .navbar .navbar-nav .nav-item {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0;
+      margin: 0px;
       padding: 0px 5px;
       width: 80px; }
     .navbar .navbar-nav .nav-item-active,
@@ -97,7 +97,7 @@ body {
   text-align: center;
   font-size: 34px;
   color: #e2eafb;
-  text-shadow: 1px 1px 2px #000000;
+  text-shadow: 1px 1px 2px #000;
   margin-top: 100px; }
 
 .preloadAnimation > div {
@@ -108,7 +108,7 @@ body {
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
   animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-  border: 1px solid #000000; }
+  border: 1px solid #000; }
 
 .preloadAnimation .bounce1 {
   -webkit-animation-delay: -0.32s;
@@ -189,8 +189,8 @@ a:link {
 .featherlight .featherlight-close-icon {
   background-color: #0078d7 !important;
   padding: 0 10px 0 3px !important;
-  border: 2px solid black !important;
-  color: white !important;
+  border: 2px solid #000 !important;
+  color: #fff !important;
   font-weight: bold !important; }
 
 #footer {

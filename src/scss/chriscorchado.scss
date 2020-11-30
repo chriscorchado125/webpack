@@ -19,7 +19,7 @@ body {
   text-align: center;
   font-size: 34px;
   color: $main_color_light;
-  text-shadow: 1px 1px 2px #000000;
+  text-shadow: 1px 1px 2px #000;
   margin-top: 100px;
 }
 
@@ -31,7 +31,7 @@ body {
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
   animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-  border: 1px solid #000000;
+  border: 1px solid #000;
 }
 
 .preloadAnimation .bounce1 {
@@ -128,8 +128,8 @@ a:link {
 .featherlight .featherlight-close-icon {
   background-color: #0078d7 !important;
   padding: 0 10px 0 3px !important;
-  border: 2px solid black !important;
-  color: white !important;
+  border: 2px solid#000 !important;
+  color: #fff !important;
   font-weight: bold !important;
 }
 

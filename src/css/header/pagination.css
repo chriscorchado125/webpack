@@ -14,7 +14,7 @@ label {
   display: inline-block;
   /* next / prev text */ }
   #pagination a {
-    color: #ffffff;
+    color: #fff;
     text-shadow: 1px 1px #000; }
   #pagination .pager-navigation {
     background-color: #346adf;
