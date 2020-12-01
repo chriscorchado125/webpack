@@ -1,6 +1,6 @@
-const API_BASE = "https://chriscorchado.com/drupal8";
+const API_BASE = 'https://chriscorchado.com/drupal8';
 const MAX_ITEMS_PER_PAGE = 50;
-const SITE_SEARCH_ID = "searchSite";
+const SITE_SEARCH_ID = 'searchSite';
 
 import { getPage } from './data'
 import { updateInterface, getCurrentPage } from './utilities'
@@ -17,13 +17,13 @@ const getSearchCount = (count: number, searchCountID: string) => {
   if (searchElement.value) {
     if (count <= MAX_ITEMS_PER_PAGE) {
       document.getElementById(searchCountID).innerHTML =
-        count + `  ${count == 1 ? "Item" : "Items"}`;
+        count + `  ${count === 1 ? 'Item' : 'Items'}`;
     } else {
       document.getElementById(searchCountID).innerHTML =
-        MAX_ITEMS_PER_PAGE + `  ${+MAX_ITEMS_PER_PAGE == 1 ? "Item" : "Items"}`;
+        MAX_ITEMS_PER_PAGE + `  ${+MAX_ITEMS_PER_PAGE === 1 ? 'Item' : 'Items'}`;
     }
 
-    return `${count} ${count == 1 ? "Item" : "Items"} `;
+    return `${count} ${count === 1 ? 'Item' : 'Items'} `;
   }
 };
 
@@ -33,8 +33,8 @@ const getSearchCount = (count: number, searchCountID: string) => {
  * @return {number} - offset number
  */
 const getSearchOffset = (link: any) => {
-  let nextURL = link.href.replace(/%2C/g, ",").replace(/%5B/g, "[").replace(/%5D/g, "]");
-  return nextURL.substring(nextURL.search("offset") + 8, nextURL.search("limit") - 6);
+  const nextURL = link.href.replace(/%2C/g, ',').replace(/%5B/g, '[').replace(/%5D/g, ']');
+  return nextURL.substring(nextURL.search('offset') + 8, nextURL.search('limit') - 6);
 };
 
 /**
@@ -51,36 +51,36 @@ const setPagination = (
   next?: any
 ) => {
   let dataOffset = 0;
-  let prevLink = "";
-  let nextLink = "";
+  let prevLink = '';
+  let nextLink = '';
 
   if (next) dataOffset = getSearchOffset(next);
 
-  let dataOffsetText = getSearchCount(count, "searchCount");
+  let dataOffsetText = getSearchCount(count, 'searchCount');
 
   // if there is a next or prev link then show the pagination
   if (!next && !prev) {
-    document.getElementById("search-container").className = "paginationNo";
+    document.getElementById('search-container').className = 'paginationNo';
     document.getElementById(
-      "searchCount"
-    ).innerHTML = `<span id="totalItems">${count}</span>
-   ${count == 1 ? "Item" : "Items"}`;
+      'searchCount'
+    ).innerHTML = `<span id='totalItems'>${count}</span>
+   ${count === 1 ? 'Item' : 'Items'}`;
   } else {
-    document.getElementById("search-container").className = "paginationYes";
-    let currentCount = +dataOffset / MAX_ITEMS_PER_PAGE;
+    document.getElementById('search-container').className = 'paginationYes';
+    const currentCount = +dataOffset / MAX_ITEMS_PER_PAGE;
 
     // first page item count
-    if (count == dataOffset) {
-      dataOffsetText = `Items 1-<span id="lastCount">${MAX_ITEMS_PER_PAGE}</span>`;
+    if (count === dataOffset) {
+      dataOffsetText = `Items 1-<span id='lastCount'>${MAX_ITEMS_PER_PAGE}</span>`;
     } else {
       // middle pages item counts
       if (currentCount !== 0) {
         dataOffsetText = `Items ${
           currentCount * MAX_ITEMS_PER_PAGE - MAX_ITEMS_PER_PAGE
-        }-<span id="lastCount">${currentCount * MAX_ITEMS_PER_PAGE}</span>`;
+        }-<span id='lastCount'>${currentCount * MAX_ITEMS_PER_PAGE}</span>`;
       } else {
         // last page item count
-        dataOffsetText = `Items ${paginationTotal}-<span id="lastCount">${
+        dataOffsetText = `Items ${paginationTotal}-<span id='lastCount'>${
           +paginationTotal + count
         }</span>`;
       }
@@ -88,27 +88,27 @@ const setPagination = (
 
     // add item counts to the page
     document.getElementById(
-      "searchCount"
-    ).innerHTML = `<span id="paging-info">${dataOffsetText}</span>`;
+      'searchCount'
+    ).innerHTML = `<span id='paging-info'>${dataOffsetText}</span>`;
 
     // configure next and prev links
     prevLink = prev
-      ? `<a href="#" class="pager-navigation" id="prev" data-prev="${prev.href}" title="View the previous page" role="button"
+      ? `<a href='#' class='pager-navigation' id='prev' data-prev='${prev.href}' title='View the previous page' role='button'
          >Prev</a>`
-      : `<span class="pager-navigation disabled" title="There is no previous page available" role="button">Prev</span>`;
+      : `<span class='pager-navigation disabled' title='There is no previous page available' role='button'>Prev</span>`;
     nextLink = next
-      ? `<a href="#" class="pager-navigation" id="next" data-next="${next.href}" title="View the next page" role="button"
+      ? `<a href='#' class='pager-navigation' id='next' data-next='${next.href}' title='View the next page' role='button'
           >Next</a>`
-      : `<span class="pager-navigation disabled" title="There is no next page available" role="button">Next</span>`;
+      : `<span class='pager-navigation disabled' title='There is no next page available' role='button'>Next</span>`;
   }
 
   // hide pagination when the item count is less than the page limit and on the first page
-  let paginationCount = document.getElementById("pagination");
+  let paginationCount = document.getElementById('pagination');
 
-  if (count < MAX_ITEMS_PER_PAGE && paginationTotal === 1) {
-    paginationCount.style.display = "none";
+  if (count < MAX_ITEMS_PER_PAGE && paginationTotal == 1) {
+    paginationCount.style.display = 'none';
   } else {
-    paginationCount.style.display = "inline-block";
+    paginationCount.style.display = 'inline-block';
     paginationCount.innerHTML = `${prevLink}  ${nextLink}`;
   }
 };
@@ -140,7 +140,7 @@ const debounce = (func: any, wait: number) => {
 const debounceMe = debounce((event: any) => {
   const inputSearchBox = document.getElementById(SITE_SEARCH_ID)! as HTMLInputElement;
 
-  if (event.key !== "Tab") {
+  if (event.key !== 'Tab') {
     getPage(getCurrentPage(), inputSearchBox.value);
     updateInterface();
   }
@@ -153,7 +153,7 @@ const debounceMe = debounce((event: any) => {
  * @return {string} - allowed characters
  */
 const searchFilter = (event: KeyboardEvent) => {
-  const allowOnlyLettersAndSpace = new RegExp("^(?! )[A-Za-z\s]*$");
+  const allowOnlyLettersAndSpace = new RegExp('^(?! )[A-Za-z\s]*$');
   return allowOnlyLettersAndSpace.test(event.key);
 };
 
@@ -163,7 +163,7 @@ const searchFilter = (event: KeyboardEvent) => {
  */
 const searchClear = (searchTextBoxID: string) => {
   const inputSearchBox = document.getElementById(searchTextBoxID)! as HTMLInputElement;
-  inputSearchBox.value = "";
+  inputSearchBox.value = '';
   //getPage(getCurrentPage());
   location.reload();
   //updateInterface();
@@ -187,21 +187,21 @@ const noRecordsFound = (
   }
 
   if (!document.getElementById(noRecordID) && search) {
-    document.getElementById("pagination").style.display = "none";
-    document.getElementsByClassName("container")[0].removeAttribute("style");
+    document.getElementById('pagination').style.display = 'none';
+    document.getElementsByClassName('container')[0].removeAttribute('style');
 
-    let notFound = document.createElement("div");
+    let notFound = document.createElement('div');
     notFound.id = noRecordID;
     notFound.innerHTML = `${msg} '${search}'`;
     document.getElementById(appendToID).appendChild(notFound);
 
-    document.getElementById("preloadAnimation").remove();
+    document.getElementById('preloadAnimation').remove();
 
-    document.getElementById("searchCount").innerHTML =
-      '<b style="color:red">No match</b>';
+    document.getElementById('searchCount').innerHTML =
+      `<b style='color:red'>No match</b>`;
   } else {
-    document.getElementById("pagination").style.display = "inline-block";
-    document.getElementById("searchBtn").style.visibility = "visible";
+    document.getElementById('pagination').style.display = 'inline-block';
+    document.getElementById('searchBtn').style.visibility = 'visible';
   }
 };
 
@@ -211,18 +211,20 @@ const noRecordsFound = (
  * @return {Array} - array of included data arrays
  */
 const getIncludedData = (data: any) => {
-  let includedAssetFilename = [""];
-  let includedCompanyName = [""];
-  let includedTechnologyName = [""];
-  let includedTechnologyIcon = [""];
+  let includedAssetFilename = [''];
+  let includedCompanyName = [''];
+  let includedTechnologyName = [''];
+  let includedTechnologyIcon = [''];
 
   data.included.forEach((included_element: any) => {
     if (included_element.attributes.description) {
       // extract image URL within quotes
-      let iconFileNamePath = /"(.*?)"/.exec(
+      let iconFileNamePath = /'(.*?)'/.exec(
         included_element.attributes.description.value
       );
-      includedTechnologyIcon[included_element.id] = iconFileNamePath[1];
+      if (iconFileNamePath) {
+        includedTechnologyIcon[included_element.id] = iconFileNamePath[1];
+      }
     }
 
     if (included_element.attributes.filename) {
@@ -264,11 +266,11 @@ const getElementRelationships = (
   includedTechnologyIcon: any
 ) => {
   let imgPieces = [];
-  let itemPDF = "";
-  let itemTrackImage = "";
-  let itemCompanyName = "";
-  let itemTechnology = "";
-  let itemTechnologyIcon = "";
+  let itemPDF = '';
+  let itemTrackImage = '';
+  let itemCompanyName = '';
+  let itemTechnology = '';
+  let itemTechnologyIcon = '';
   let includedTechnologyItem = [];
 
   // get course screenshot filename
@@ -334,12 +336,12 @@ const getElementRelationships = (
       itemTechnology +=
         includedTechnologyName[
           element.relationships.field_project_technology.data[i].id
-        ] + ", ";
+        ] + ', ';
 
       itemTechnologyIcon +=
         includedTechnologyIcon[
           element.relationships.field_project_technology.data[i].id
-        ] + ", ";
+        ] + ', ';
 
       let technologyItem = {
         name:
@@ -374,36 +376,36 @@ const getElementRelationships = (
  * @return {string} - search result with/without highlight
  */
 const itemWithSearchHighlight = (itemToHighlight: string, searchedFor: string) => {
-  let dataToReturn = "";
+  let dataToReturn = '';
 
   if (searchedFor) {
-    let searchTerm = new RegExp(searchedFor, "gi");
-    let results = "";
+    let searchTerm = new RegExp(searchedFor, 'gi');
+    let results = '';
 
-    let searchString = "";
+    let searchString = '';
     let searchStringArray = [];
 
     if (itemToHighlight && +itemToHighlight !== -1) {
-      searchString = itemToHighlight.replace("&amp;", "&").replace("&#039;", "'");
+      searchString = itemToHighlight.replace('&amp;', '&').replace('&#039;', `'`);
     }
 
     /* check for HTML
      * TODO: use entities within Drupal to avoid adding body content with HTML
      */
-    if (searchString.indexOf("<ul>") !== -1) {
-      let listItem = "";
+    if (searchString.indexOf('<ul>') !== -1) {
+      let listItem = '';
 
-      let searchWithHTML = searchString.replace("<ul>", "").replace("</ul>", ""); // remove ul tags
-      searchStringArray = searchWithHTML.split("<li>"); // break the li items into an array
+      let searchWithHTML = searchString.replace('<ul>', '').replace('</ul>', ''); // remove ul tags
+      searchStringArray = searchWithHTML.split('<li>'); // break the li items into an array
 
       searchStringArray.forEach((element) => {
         if (element.length > 3) {
-          searchString = element.slice(0, element.lastIndexOf("<")); // remove closing li tag
+          searchString = element.slice(0, element.lastIndexOf('<')); // remove closing li tag
 
           if (searchString.match(searchTerm)) {
             results = searchString.replace(
               searchTerm,
-              (match) => `<span class="highlightSearchText">${match}</span>`
+              (match) => `<span class='highlightSearchText'>${match}</span>`
             );
 
             listItem += `<li>${results}</li>`;
@@ -418,7 +420,7 @@ const itemWithSearchHighlight = (itemToHighlight: string, searchedFor: string) =
       if (searchString.match(searchTerm)) {
         results = searchString.replace(
           searchTerm,
-          (match) => `<span class="highlightSearchText">${match}</span>`
+          (match) => `<span class='highlightSearchText'>${match}</span>`
         );
 
         dataToReturn += results;

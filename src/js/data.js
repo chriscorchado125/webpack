@@ -7,9 +7,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const API_BASE = "https://chriscorchado.com/drupal8";
+const API_BASE = 'https://chriscorchado.com/drupal8';
 const MAX_ITEMS_PER_PAGE = 50;
-const SITE_SEARCH_ID = "searchSite";
+const SITE_SEARCH_ID = 'searchSite';
 import { getFullUrlByPage, getCurrentPage, getMonthYear, cleanURL, setLoading, updateInterface } from './utilities';
 import { setPagination, getIncludedData, getElementRelationships, itemWithSearchHighlight, debounceMe, searchFilter, searchClear } from './search';
 import { formSubmitted } from './form';
@@ -18,20 +18,20 @@ const getPage = (page, search, pagingURL) => __awaiter(void 0, void 0, void 0, f
     setLoading(true);
     if (search) {
     }
-    if (page == "contact") {
-        if (location.toString().indexOf("submitted") == -1) {
+    if (page == 'contact') {
+        if (location.toString().indexOf('submitted') == -1) {
             yield fetch(`${API_BASE}/contact/feedback`)
                 .then((resp) => {
                 return resp.ok ? resp.text() : Promise.reject(resp.statusText);
             })
                 .then((page) => {
                 data = page.replace(/\/drupal8/g, API_BASE);
-                let form = data.substr(data.indexOf("<form class="), data.indexOf("</form>"));
-                form = form.substr(0, form.indexOf("</form>") + 8);
-                form = form.replace("Your email address", "Email");
-                let script = data.substr(data.indexOf('<script type="application/json" data-drupal-selector="drupal-settings-json">'), data.indexOf("></script>"));
-                script = script.substr(0, script.indexOf("</script>") + 9);
-                data = `<h1 id="content">Contact</h1>${form} ${script}`;
+                let form = data.substr(data.indexOf('<form class='), data.indexOf('</form>'));
+                form = form.substr(0, form.indexOf('</form>') + 8);
+                form = form.replace('Your email address', 'Email');
+                let script = data.substr(data.indexOf(`<script type='application/json' data-drupal-selector='drupal-settings-json'>`), data.indexOf('></script>'));
+                script = script.substr(0, script.indexOf('</script>') + 9);
+                data = `<h1 id='content'>Contact</h1>${form} ${script}`;
             })
                 .catch((error) => {
                 alert(`Sorry an error has occurred: ${error}`);
@@ -47,13 +47,13 @@ const getPage = (page, search, pagingURL) => __awaiter(void 0, void 0, void 0, f
         }
         else {
             switch (page) {
-                case "about":
-                case "webpack":
+                case 'about':
+                case 'webpack':
                     data = yield getData(`${API_BASE}/jsonapi/node/page?fields[node--page]=id,title,body&
               filter[id][operator]=CONTAINS&
               filter[id][value]=ca23f416-ad70-41c2-9228-52ba6577abfe`);
                     break;
-                case "companies":
+                case 'companies':
                     if (search) {
                         data = yield getData(`${API_BASE}/jsonapi/node/company?filter[or-group][group][conjunction]=OR&
                 filter[field_company_name][operator]=CONTAINS&
@@ -75,7 +75,7 @@ const getPage = (page, search, pagingURL) => __awaiter(void 0, void 0, void 0, f
                 page[limit]=${MAX_ITEMS_PER_PAGE}`);
                     }
                     break;
-                case "courses":
+                case 'courses':
                     if (search) {
                         data = yield getData(`${API_BASE}/jsonapi/node/awards?filter[or-group][group][conjunction]=OR&
                 filter[title][operator]=CONTAINS&
@@ -94,7 +94,7 @@ const getPage = (page, search, pagingURL) => __awaiter(void 0, void 0, void 0, f
                 page[limit]=${MAX_ITEMS_PER_PAGE}`);
                     }
                     break;
-                case "projects":
+                case 'projects':
                     if (search) {
                         data = yield getData(`${API_BASE}/jsonapi/node/project?filter[or-group][group][conjunction]=OR&
               filter[title][operator]=CONTAINS&
@@ -125,7 +125,7 @@ const getPage = (page, search, pagingURL) => __awaiter(void 0, void 0, void 0, f
                 page[limit]=${MAX_ITEMS_PER_PAGE}`);
                     }
                     break;
-                case "resume":
+                case 'resume':
                     data = yield getData(`${API_BASE}/jsonapi/node/page?fields[node--page]=id,title,body&
               filter[id][operator]=CONTAINS&
               filter[id][value]=815cf534-a677-409c-be7a-b231c24827b5`);
@@ -134,8 +134,8 @@ const getPage = (page, search, pagingURL) => __awaiter(void 0, void 0, void 0, f
         }
     }
     let passedInCount = {
-        currentCount: document.getElementById("lastCount")
-            ? document.getElementById("lastCount").textContent
+        currentCount: document.getElementById('lastCount')
+            ? document.getElementById('lastCount').textContent
             : 1
     };
     data = Object.assign(Object.assign({}, data), { passedInCount });
@@ -154,48 +154,48 @@ const getData = (dataURL) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 const addProfiles = (id) => {
-    const baseDir = window.location.toString().toLocaleLowerCase().indexOf("/webpack") !== -1 ? "/webpack" : "";
+    const baseDir = window.location.toString().toLocaleLowerCase().indexOf('/webpack') !== -1 ? '/webpack' : '';
     document.getElementById(id).innerHTML = `
-  <div class="icon" id="html-resume">
-    <a href="${baseDir}/resume.html">
-      <img alt="Link to HTML Resume with PDF and Word options" src="https://chriscorchado.com/images/htmlIcon.jpg" />
+  <div class='icon' id='html-resume'>
+    <a href='${baseDir}/resume.html'>
+      <img alt='Link to HTML Resume with PDF and Word options' src='https://chriscorchado.com/images/htmlIcon.jpg' />
       <span>Resume</span>
     </a>
   </div>
 
-  <div class="icon" id="profile-linkedin">
-    <a href="https://www.linkedin.com/in/chriscorchado/" target="_blank">
-      <img alt="Link to LinkedIn Profile" title="Link to LinkedIn Profile" src="https://chriscorchado.com/images/linkedInIcon.jpg" />
+  <div class='icon' id='profile-linkedin'>
+    <a href='https://www.linkedin.com/in/chriscorchado/' target='_blank'>
+      <img alt='Link to LinkedIn Profile' title='Link to LinkedIn Profile' src='https://chriscorchado.com/images/linkedInIcon.jpg' />
       <span>LinkedIn</span>
     </a>
   </div>
 
-  <div class="icon" id="profile-azure">
-    <a href="https://docs.microsoft.com/en-us/users/corchadochrisit-2736/" target="_blank">
-      <img alt="Link to Azure Profile" title="Link to Azure Profile" src="https://chriscorchado.com/images/azureIcon.png" />
+  <div class='icon' id='profile-azure'>
+    <a href='https://docs.microsoft.com/en-us/users/corchadochrisit-2736/' target='_blank'>
+      <img alt='Link to Azure Profile' title='Link to Azure Profile' src='https://chriscorchado.com/images/azureIcon.png' />
       <span>Azure</span>
     </a>
   </div>`;
 };
 const addResumes = (id) => {
     document.getElementById(id).innerHTML = `
-  <div class="icon" id="pdf-resume">
-    <a href="https://chriscorchado.com/resume/Chris-Corchado-resume-2020.pdf" target="_blank" rel="noopener" title="Opening a new window">
-      <img alt="Link to PDF Resume" src="https://chriscorchado.com/images/pdfIcon.jpg" />
+  <div class='icon' id='pdf-resume'>
+    <a href='https://chriscorchado.com/resume/Chris-Corchado-resume-2020.pdf' target='_blank' rel='noopener' title='Opening a new window'>
+      <img alt='Link to PDF Resume' src='https://chriscorchado.com/images/pdfIcon.jpg' />
       <span>PDF</span>
     </a>
   </div>
 
-  <div class="icon" id="word-resume">
-    <a href="https://chriscorchado.com/resume/Chris-Corchado-resume-2020.docx" title="File will download">
-      <img alt="Link to MS Word Resume" src="https://chriscorchado.com/images/wordIcon.jpg" />
+  <div class='icon' id='word-resume'>
+    <a href='https://chriscorchado.com/resume/Chris-Corchado-resume-2020.docx' title='File will download'>
+      <img alt='Link to MS Word Resume' src='https://chriscorchado.com/images/wordIcon.jpg' />
       <span>Word</span>
     </a>
   </div>
 `;
 };
 const setPageHTML = (values) => {
-    let item = "";
+    let item = '';
     let page = values[0];
     let data = values[1];
     let itemTitle = values[2];
@@ -213,101 +213,98 @@ const setPageHTML = (values) => {
     let includedTechnologyItem = values[14];
     let indexCount = values[15];
     switch (page) {
-        case "about":
-        case "webpack":
-            document.getElementById("search-container").style.display = "none";
-            document.getElementById("logo").getElementsByTagName("img")[0].style.border =
-                "1px dashed #7399EA";
+        case 'about':
+        case 'webpack':
+            document.getElementById('search-container').style.display = 'none';
+            document.getElementById('logo').getElementsByTagName('img')[0].style.border =
+                '1px dashed #7399EA';
             let aboutData = data.attributes.body.value.toString();
-            addProfiles("profiles");
+            addProfiles('profiles');
             return aboutData;
-            break;
-        case "contact":
-            addProfiles("profiles");
-            if (location.toString().indexOf("/contact.html?submitted=true") !== -1) {
+        case 'contact':
+            addProfiles('profiles');
+            if (location.toString().indexOf('/contact.html?submitted=true') !== -1) {
                 formSubmitted(5);
             }
             else {
-                document.getElementsByClassName("container")[0].innerHTML = data.toString();
-                document.getElementById("contact-link").className += " nav-item-active";
-                const webLocation = document.getElementById("edit-field-site-0-value");
+                document.getElementsByClassName('container')[0].innerHTML = data.toString();
+                document.getElementById('contact-link').className += ' nav-item-active';
+                const webLocation = document.getElementById('edit-field-site-0-value');
                 webLocation.value = location.toString();
-                document.getElementById("edit-mail").focus();
+                document.getElementById('edit-mail').focus();
             }
             break;
-        case "companies":
-            return `<div class="company-container col shadow">
+        case 'companies':
+            return `<div class='company-container col shadow'>
 
-          <div class="company-name">${itemTitle}</div>
-          <div class="company-job-title">${itemJobTitle}</div>
-          <div class="body-container">${itemBody}</div>
+          <div class='company-name'>${itemTitle}</div>
+          <div class='company-job-title'>${itemJobTitle}</div>
+          <div class='body-container'>${itemBody}</div>
 
-          <div class="screenshot-container">
-            <img loading="lazy" src=${getFullUrlByPage(imgPieces[0], page)}
-            class="company-screenshot"
-            alt="${data.attributes.title} Screenshot"
-            title="${data.attributes.title} Screenshot" />
+          <div class='screenshot-container'>
+            <img loading='lazy' src=${getFullUrlByPage(imgPieces[0], page)}
+            class='company-screenshot'
+            alt='${data.attributes.title} Screenshot'
+            title='${data.attributes.title} Screenshot' />
           </div>
 
-          <div class="employment-dates">${startDate} - ${endDate}</div>
+          <div class='employment-dates'>${startDate} - ${endDate}</div>
         </div>`;
-            break;
-        case "courses":
-            item = `<div class="course-box box">
+        case 'courses':
+            item = `<div class='course-box box'>
           <h2>${itemTitle}</h2>
 
           <div>
-            <img loading="lazy" src="${getFullUrlByPage(imgPieces[0], page)}"
-              alt="${itemTitle.replace(/(<([^>]+)>)/gi, "")}"
-              title="${itemTitle.replace(/(<([^>]+)>)/gi, "")}"  />
+            <img loading='lazy' src='${getFullUrlByPage(imgPieces[0], page)}'
+              alt='${itemTitle.replace(/(<([^>]+)>)/gi, '')}'
+              title='${itemTitle.replace(/(<([^>]+)>)/gi, '')}'  />
           </div>
 
-          <div class="course-wrapper">
+          <div class='course-wrapper'>
 
-            <span class="course-date" >${itemDate}</span>
+            <span class='course-date' >${itemDate}</span>
 
-            <span class="course-links">
-              <a href="${getFullUrlByPage(itemPDF, page)}" target="_blank" >
-                <img loading="lazy" src="https://chriscorchado.com/images/pdfIcon.jpg" height="25"
-                title="View the PDF Certificate" alt="View the PDF Certificate"/>
+            <span class='course-links'>
+              <a href='${getFullUrlByPage(itemPDF, page)}' target='_blank' >
+                <img loading='lazy' src='https://chriscorchado.com/images/pdfIcon.jpg' height='25'
+                title='View the PDF Certificate' alt='View the PDF Certificate'/>
               </a>
             </span>`;
             if (itemTrackImage) {
-                item += `<span class="course-links">
-            <a href="${getFullUrlByPage(itemTrackImage, page)}" data-featherlight="image" >
-              <img loading="lazy" src="https://chriscorchado.com/images/linkedIn-track.png" height="25"
-              title="View the Courses in the Track" alt="View the Courses in the Track" />
+                item += `<span class='course-links'>
+            <a href='${getFullUrlByPage(itemTrackImage, page)}' data-featherlight='image' >
+              <img loading='lazy' src='https://chriscorchado.com/images/linkedIn-track.png' height='25'
+              title='View the Courses in the Track' alt='View the Courses in the Track' />
             </a>
           </span>`;
             }
             return (item += `</div></div>`);
-            break;
-        case "projects":
+        case 'projects':
             let imgAltCount = 0;
-            item = `<div class="project col">
-        <div class="project-title">${itemTitle}</div>
-        <div class="project-company">${itemCompanyName} <span class="project-date">(${itemDate})</span></div>
-        <div class="body-container">${itemBody}</div>`;
+            item = `<div class='project col'>
+        <div class='project-title'>${itemTitle}</div>
+        <div class='project-company'>${itemCompanyName} <span class='project-date'>(${itemDate})</span></div>
+        <div class='body-container'>${itemBody}</div>`;
             if (imgPieces) {
                 let itemGridClass = `project-item-grid project-items${data.relationships.field_screenshot.data.length}`;
-                let section = `<section data-featherlight-gallery data-featherlight-filter="a" class="${itemGridClass}">`;
+                let section = `<section data-featherlight-gallery data-featherlight-filter='a' class='${itemGridClass}'>`;
                 let screenshotAlt = new Array();
                 data.relationships.field_screenshot.data.forEach((screenshot) => {
                     screenshotAlt.push(screenshot.meta.alt);
                 });
                 imgAltCount = 0;
                 imgPieces.forEach((img) => {
-                    let pieces = img.split(",");
+                    let pieces = img.split(',');
                     pieces.forEach((item) => {
                         let projectImage = getFullUrlByPage(item, page);
-                        section += `<div class="project-item shadow" title='${screenshotAlt[imgAltCount]}'>
+                        section += `<div class='project-item shadow' title='${screenshotAlt[imgAltCount]}'>
 
-              <a href=${projectImage} class="gallery" >
-                <div class="project-item-desc">
+              <a href=${projectImage} class='gallery' >
+                <div class='project-item-desc'>
                   ${itemWithSearchHighlight(screenshotAlt[imgAltCount], searchedFor)}
                 </div>
 
-                <img loading="lazy" src='${projectImage}' alt='${screenshotAlt[imgAltCount]}'
+                <img loading='lazy' src='${projectImage}' alt='${screenshotAlt[imgAltCount]}'
                   title='${screenshotAlt[imgAltCount]}' />
               </a>
             </div>`;
@@ -320,32 +317,30 @@ const setPageHTML = (values) => {
             if (data.attributes.field_video_url) {
                 let encodedName = encodeURIComponent(itemTitle);
                 data.attributes.field_video_url.forEach((img) => {
-                    item += `<span title="Play Video"><a href="https://chriscorchado.com/video.html?url=${data.attributes.field_video_url}&name=${encodedName}" target="_blank" class="play-video" >
-            Play Video <img loading="lazy" src="https://chriscorchado.com/images/play_video_new_window_icon.png" alt="Play Video" width="20" />
+                    item += `<span title='Play Video'><a href='https://chriscorchado.com/video.html?url=${data.attributes.field_video_url}&name=${encodedName}' target='_blank' class='play-video' >
+            Play Video <img loading='lazy' src='https://chriscorchado.com/images/play_video_new_window_icon.png' alt='Play Video' width='20' />
           </a></span>`;
                 });
             }
-            item += `<div class="project-technology">${itemTechnology.slice(0, -2)}</div>`;
+            item += `<div class='project-technology'>${itemTechnology.slice(0, -2)}</div>`;
             item += `</div>`;
             return item;
-            break;
-        case "resume":
+        case 'resume':
             let resumeData = data.attributes.body.value.toString();
-            addResumes("profiles");
+            addResumes('profiles');
             return resumeData;
-            break;
     }
 };
 const renderPage = (data, page, searchedFor, next, prev) => {
     let pageIsSearchable = false;
-    if (page == "contact") {
+    if (page == 'contact') {
         setPageHTML([page, data]);
         return;
     }
-    let includedCompanyName = [""];
-    let includedAssetFilename = [""];
-    let includedTechnologyName = [""];
-    let includedTechnologyIcon = [""];
+    let includedCompanyName = [''];
+    let includedAssetFilename = [''];
+    let includedTechnologyName = [''];
+    let includedTechnologyIcon = [''];
     if (data.included) {
         let allIncludedData = getIncludedData(data);
         includedCompanyName = allIncludedData[0];
@@ -353,20 +348,20 @@ const renderPage = (data, page, searchedFor, next, prev) => {
         includedTechnologyName = allIncludedData[2];
         includedTechnologyIcon = allIncludedData[3];
     }
-    let item = "", itemBody = "", currentNavItem = "", itemTitle = "", itemDate = "", startDate = "", endDate = "", itemJobTitle = "", itemTechnology = "", itemTechnologyIcon = "", itemCompanyName = "", itemWorkType = "", itemPDF = "", itemTrackImage = "";
+    let item = '', itemBody = '', currentNavItem = '', itemTitle = '', itemDate = '', startDate = '', endDate = '', itemJobTitle = '', itemTechnology = '', itemTechnologyIcon = '', itemCompanyName = '', itemWorkType = '', itemPDF = '', itemTrackImage = '';
     let itemCount = 0;
     let imgPieces = [];
     let includedTechnologyItem = [];
     data.data.forEach((element) => {
         itemTitle = element.attributes.title;
-        itemBody = element.attributes.body ? element.attributes.body.value : "";
+        itemBody = element.attributes.body ? element.attributes.body.value : '';
         itemDate = element.attributes.field_date || element.attributes.field_award_date;
         itemJobTitle = element.attributes.field_job_title;
         startDate = element.attributes.field_start_date;
         endDate = element.attributes.field_end_date;
-        itemWorkType = element.attributes.field_type == "full" ? "Full-Time" : "Contract";
-        itemTechnology = "";
-        itemTrackImage = "";
+        itemWorkType = element.attributes.field_type == 'full' ? 'Full-Time' : 'Contract';
+        itemTechnology = '';
+        itemTrackImage = '';
         imgPieces = [];
         includedTechnologyItem = [];
         if (element.relationships) {
@@ -383,16 +378,16 @@ const renderPage = (data, page, searchedFor, next, prev) => {
             includedTechnologyItem.push(relationshipData[6]);
         }
         if (itemDate) {
-            if (page == "projects")
-                itemDate = itemDate.split("-")[0];
-            if (page == "courses")
+            if (page == 'projects')
+                itemDate = itemDate.split('-')[0];
+            if (page == 'courses')
                 itemDate = getMonthYear(itemDate);
         }
         if (startDate)
             startDate = getMonthYear(startDate);
         if (endDate)
             endDate = getMonthYear(endDate);
-        itemTitle = itemTitle.replace("&amp;", "&");
+        itemTitle = itemTitle.replace('&amp;', '&');
         if (searchedFor) {
             itemTitle = itemWithSearchHighlight(itemTitle, searchedFor);
             itemDate = itemWithSearchHighlight(itemDate, searchedFor);
@@ -402,7 +397,7 @@ const renderPage = (data, page, searchedFor, next, prev) => {
             itemJobTitle = itemWithSearchHighlight(itemJobTitle, searchedFor);
             itemTechnology = itemWithSearchHighlight(itemTechnology, searchedFor);
             itemCompanyName = itemWithSearchHighlight(itemCompanyName, searchedFor);
-            if (itemWorkType !== "node-company") {
+            if (itemWorkType !== 'node-company') {
                 itemWorkType = itemWithSearchHighlight(itemWorkType, searchedFor);
             }
         }
@@ -425,99 +420,99 @@ const renderPage = (data, page, searchedFor, next, prev) => {
             includedTechnologyItem
         ];
         switch (page) {
-            case "about":
-            case "webpack":
+            case 'about':
+            case 'webpack':
                 item = setPageHTML(allValues);
                 break;
-            case "companies":
+            case 'companies':
                 item += setPageHTML(allValues);
                 break;
-            case "courses":
+            case 'courses':
                 item += setPageHTML(allValues);
                 break;
-            case "projects":
+            case 'projects':
                 item += setPageHTML(allValues);
                 break;
-            case "resume":
+            case 'resume':
                 item = setPageHTML(allValues);
                 break;
         }
     });
     let pageHasGallery = false;
     switch (page) {
-        case "about":
-        case "webpack":
-            currentNavItem = "about-link";
-            item = `<h1 id="content">About Me</h1>${item}`;
+        case 'about':
+        case 'webpack':
+            currentNavItem = 'about-link';
+            item = `<h1 id='content'>About Me</h1>${item}`;
             break;
-        case "companies":
-            currentNavItem = "companies-link";
+        case 'companies':
+            currentNavItem = 'companies-link';
             pageIsSearchable = true;
-            item = `<h1 id="content">History</h1><div class="container company">${item}</div>`;
+            item = `<h1 id='content'>History</h1><div class='container company'>${item}</div>`;
             break;
-        case "courses":
-            currentNavItem = "courses-link";
-            pageIsSearchable = true;
-            pageHasGallery = true;
-            item = ` <h1 id="content">Courses</h1><div class="container courses-container row">${item}</div>`;
-            break;
-        case "projects":
-            currentNavItem = "projects-link";
+        case 'courses':
+            currentNavItem = 'courses-link';
             pageIsSearchable = true;
             pageHasGallery = true;
-            item = `<h1 id="content">Projects</h1><div class="container project-container row">${item}</div>`;
+            item = ` <h1 id='content'>Courses</h1><div class='container courses-container row'>${item}</div>`;
             break;
-        case "resume":
-            item = `<h1 id="content">Resume</h1><div class="container">${item}</div>`;
+        case 'projects':
+            currentNavItem = 'projects-link';
+            pageIsSearchable = true;
+            pageHasGallery = true;
+            item = `<h1 id='content'>Projects</h1><div class='container project-container row'>${item}</div>`;
+            break;
+        case 'resume':
+            item = `<h1 id='content'>Resume</h1><div class='container'>${item}</div>`;
             break;
     }
-    if (page !== "about" && page !== "resume" && page !== "webpack") {
-        document.getElementById(currentNavItem).className += " nav-item-active";
+    if (page !== 'about' && page !== 'resume' && page !== 'webpack') {
+        document.getElementById(currentNavItem).className += ' nav-item-active';
     }
-    document.getElementsByClassName("container")[0].innerHTML = item;
+    document.getElementsByClassName('container')[0].innerHTML = item;
     if (pageIsSearchable) {
-        document.getElementById("search-container").style.display = "block";
+        document.getElementById('search-container').style.display = 'block';
         let searchTextBox = document.getElementById(SITE_SEARCH_ID);
-        searchTextBox.addEventListener("keydown", event => {
+        searchTextBox.addEventListener('keydown', event => {
             return searchFilter(event);
         });
         let searchSubmit = document.getElementById('searchSubmit');
-        searchSubmit.addEventListener("click", event => {
+        searchSubmit.addEventListener('click', event => {
             debounceMe(event);
         });
         let searchClearButton = document.getElementById('searchBtn');
-        searchClearButton.addEventListener("click", event => {
+        searchClearButton.addEventListener('click', event => {
             searchClear(SITE_SEARCH_ID);
         });
     }
     if (pageHasGallery) {
-        $("a.gallery").featherlightGallery({
-            previousIcon: "<img src='https://chriscorchado.com/lightbox/images/left-arrow.png' alt='Prev' />",
-            nextIcon: "<img src='https://chriscorchado.com/lightbox/images/right-arrow.png' alt='Next' />",
+        $('a.gallery').featherlightGallery({
+            previousIcon: `<img src='https://chriscorchado.com/lightbox/images/left-arrow.png' alt='Prev' />`,
+            nextIcon: `<img src='https://chriscorchado.com/lightbox/images/right-arrow.png' alt='Next' />`,
             galleryFadeIn: 200,
             galleryFadeOut: 300
         });
     }
-    if (page !== "about" && page !== "contact" && page !== "webpack") {
+    if (page !== 'about' && page !== 'contact' && page !== 'webpack') {
         setPagination(itemCount, data.passedInCount.currentCount, prev, next);
         const inputSearchBox = document.getElementById(SITE_SEARCH_ID);
         if (document.getElementById('prev')) {
             let pagerNavPrev = document.getElementById('prev');
-            pagerNavPrev.addEventListener("click", event => {
+            pagerNavPrev.addEventListener('click', event => {
                 getPage(getCurrentPage(), inputSearchBox.value, pagerNavPrev.dataset.prev);
             });
         }
         if (document.getElementById('next')) {
             let pagerNavNext = document.getElementById('next');
-            pagerNavNext.addEventListener("click", event => {
+            pagerNavNext.addEventListener('click', event => {
                 getPage(getCurrentPage(), inputSearchBox.value, pagerNavNext.dataset.next);
             });
         }
     }
     setLoading(false);
-    if (page == "about" || page == "webpack") {
-        document.getElementById("webpack").setAttribute("class", "shadow-version noLink");
-        document.getElementById("webpack-here").style.display = "block";
+    if (page == 'about' || page == 'webpack') {
+        document.getElementById('webpack').setAttribute('class', 'shadow-version noLink');
+        document.getElementById('webpack-here').style.display = 'block';
     }
 };
 export { getPage, getData, addProfiles, setPageHTML, renderPage };

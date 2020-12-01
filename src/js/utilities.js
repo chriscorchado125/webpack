@@ -7,13 +7,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const API_BASE = "https://chriscorchado.com/drupal8";
+const API_BASE = 'https://chriscorchado.com/drupal8';
 import { noRecordsFound } from './search';
 const fadeOut = (el) => {
     el.style.opacity = 1;
     (function fade() {
         if ((el.style.opacity -= 0.2) < 0) {
-            el.style.display = "none";
+            el.style.display = 'none';
         }
         else {
             requestAnimationFrame(fade);
@@ -36,31 +36,31 @@ const updateMenuPages = (currentPage, targetContainer) => __awaiter(void 0, void
         return resp.ok ? resp.json() : Promise.reject(resp.statusText);
     })
         .then((pageData) => {
-        let pageName = "";
-        let pageLink = "";
-        let homepageStyle = "";
-        if (currentPage == "about") {
-            homepageStyle = "border: 1px dashed rgb(115, 153, 234);";
+        let pageName = '';
+        let pageLink = '';
+        let homepageStyle = '';
+        if (currentPage == 'about') {
+            homepageStyle = 'border: 1px dashed rgb(115, 153, 234);';
         }
-        let generatedPageLinks = `<a href="index.html" class="navbar-brand" id="logo" style="${homepageStyle}">
-        <img src="./images/chriscorchado-initials-logo.png" title="Home" alt="Home">
+        let generatedPageLinks = `<a href='index.html' class='navbar-brand' id='logo' style='${homepageStyle}'>
+        <img src='./images/chriscorchado-initials-logo.png' title='Home' alt='Home'>
       </a>`;
         for (let page in pageData) {
             pageName = pageData[page].title;
-            if (pageName == "Home" || pageName == "About" || !pageData[page].enabled) {
+            if (pageName == 'Home' || pageName == 'About' || !pageData[page].enabled) {
                 continue;
             }
-            let activeNavItem = "";
+            let activeNavItem = '';
             if (currentPage == pageName.toLowerCase()) {
-                activeNavItem = "nav-item-active";
+                activeNavItem = 'nav-item-active';
             }
             pageLink = pageName;
-            if (pageName == "Companies")
-                pageName = "History";
-            generatedPageLinks += `<a href="${pageLink.toLowerCase()}.html"
-        class="nav-item nav-link ${activeNavItem}"
-        title="${pageName}"
-        id="${pageName.toLowerCase()}-link">${pageName}</a>`;
+            if (pageName == 'Companies')
+                pageName = 'History';
+            generatedPageLinks += `<a href='${pageLink.toLowerCase()}.html'
+        class='nav-item nav-link ${activeNavItem}'
+        title='${pageName}'
+        id='${pageName.toLowerCase()}-link'>${pageName}</a>`;
         }
         document.getElementById(targetContainer).innerHTML = generatedPageLinks;
     })
@@ -70,78 +70,78 @@ const updateMenuPages = (currentPage, targetContainer) => __awaiter(void 0, void
 });
 const getCurrentPage = () => {
     let thisPage = window.location.pathname
-        .split("/")
+        .split('/')
         .filter(function (pathnamePieces) {
         return pathnamePieces.length;
     })
         .pop();
-    let pageName = "";
+    let pageName = '';
     if (thisPage)
-        pageName = thisPage.split(".")[0];
-    if (pageName == "index" || !pageName)
-        pageName = "about";
+        pageName = thisPage.split('.')[0];
+    if (pageName == 'index' || !pageName)
+        pageName = 'about';
     return pageName;
 };
 const getFullUrlByPage = (linkToFix, page) => {
-    let pathToResource = "No Path Found";
+    let pathToResource = 'No Path Found';
     switch (page) {
-        case "companies":
-            pathToResource = "company-screenshot";
+        case 'companies':
+            pathToResource = 'company-screenshot';
             break;
-        case "courses":
-            if (linkToFix.indexOf(".pdf") !== -1) {
-                pathToResource = "award-pdf";
+        case 'courses':
+            if (linkToFix.indexOf('.pdf') !== -1) {
+                pathToResource = 'award-pdf';
             }
             else {
-                pathToResource = "award-images";
+                pathToResource = 'award-images';
             }
             break;
-        case "projects":
-            pathToResource = "project-screenshot";
+        case 'projects':
+            pathToResource = 'project-screenshot';
             break;
     }
     return `${API_BASE}/sites/default/files/${pathToResource}/${linkToFix}`;
 };
 const getMonthYear = (dateString) => {
     let newDate = new Date(dateString);
-    return (newDate.toLocaleString("default", { month: "long" }) +
-        " " +
+    return (newDate.toLocaleString('default', { month: 'long' }) +
+        ' ' +
         newDate.getFullYear().toString());
 };
 const cleanURL = (urlToClean) => {
-    let fixedURL = "";
-    let strings = urlToClean.split(" ");
+    let fixedURL = '';
+    let strings = urlToClean.split(' ');
     strings.forEach((element) => {
         if (element)
-            fixedURL += element.replace(/$\n^\s*/gm, "");
+            fixedURL += element.replace(/$\n^\s*/gm, '');
     });
     return fixedURL;
 };
 const setLoading = (loadingStatus) => {
     if (loadingStatus) {
-        let preloader = document.createElement("div");
+        let preloader = document.createElement('div');
         preloader.innerHTML = `
-      <div class="preloadAnimation" id="preloadAnimation">
-        <div class="bounce1"></div>
-        <div class="bounce2"></div>
-        <div class="bounce3"></div>
+      <div class='preloadAnimation' id='preloadAnimation'>
+        <div class='bounce1'></div>
+        <div class='bounce2'></div>
+        <div class='bounce3'></div>
         <br />Loading
       </div>`;
         document.body.append(preloader);
     }
     else {
-        document.getElementById("preloadAnimation").remove();
-        if (document.getElementsByClassName("container")[0]) {
-            let mainContainer = document.getElementsByClassName("container")[0];
+        document.getElementById('preloadAnimation').remove();
+        if (document.getElementsByClassName('container')[0]) {
+            let mainContainer = document.getElementsByClassName('container')[0];
             fadeIn(mainContainer);
         }
-        if (document.getElementsByClassName("container")[1]) {
-            let dataContainer = document.getElementsByClassName("container")[1];
+        if (document.getElementsByClassName('container')[1]) {
+            let dataContainer = document.getElementsByClassName('container')[1];
             fadeIn(dataContainer);
         }
     }
 };
 const updateInterface = (search) => {
-    noRecordsFound("noRecords", search, "navigation", "No matches found for");
+    noRecordsFound('noRecords', search, 'navigation', 'No matches found for');
 };
 export { fadeOut, fadeIn, updateMenuPages, getCurrentPage, getFullUrlByPage, getMonthYear, cleanURL, setLoading, updateInterface };
